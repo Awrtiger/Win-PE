@@ -1,0 +1,2086 @@
+;/*++
+;
+;Copyright (c) Microsoft Corporation.  All rights reserved.
+;
+;Module Name:
+;
+;    ERRATA.INF
+;
+;Abstract:
+;    INF file for the Errata Manager Database
+;
+;--*/
+;
+
+;===============================================================
+;================== Declare the Target Rules ===================
+;===============================================================
+;
+;Specify the rules that the clients can register for notifications
+;Also need to specify the necessary string parameters if required
+;
+;N.B. The rule names must have been defined in the [RuleNameGuidDef] Section
+;     Declared in [RuleDef] Section and implemented in [Rule] Section
+;=================================================================
+[TargetRuleDef]
+ACPISLPWorkAround = {FACP.ACER_OEMID.FACP.M25D_TableId}, \       ;ACERM25D02/25/00
+                    {FACP.COMPAQ_OEMID.FACP.LAREDO_TableId}, \   ;COMPAQLAREDO07/05/99
+                    {FACP.DELL_OEMID.FACP.WS210_TABLEID}, \      ;DellPrecisionWS210
+                    {FACP.DELL_OEMID.FACP.WS410_TABLEID}, \      ;DellPrecisionWS410
+                    {FACP.DELL_OEMID.FACP.WS610_TABLEID}, \      ;DellPrecisionWS610
+                    {FACP.DELL_OEMID.FACP.PE1300_TABLEID}, \     ;DellPowerEdge1300
+                    {FACP.DELL_OEMID.FACP.PE2300_TABLEID}, \     ;DellPowerEdge2300
+                    {FACP.DELL_OEMID.FACP.PE4300_TABLEID}, \     ;DellPowerEdge4300
+                    {FACP.DELL_OEMID.FACP.PE4350_TABLEID}, \     ;DellPowerEdge4350
+                    {FACP.DELL_OEMID.FACP.PE6300_TABLEID}, \     ;DellPowerEdge6300
+                    {FACP.DELL_OEMID.FACP.PE6350_TABLEID}, \     ;DellPowerEdge6350
+                    {FACP.DELL_OEMID.FACP.PE8450_TABLEID}, \     ;DellPowerEdge8450
+                    {FACP.GATEWAY_OEMID.FACP.OR840_TABLEID}, \   ;GatewayOR84
+                    {FACP.INTEL_OEMID.FACP.MS440GX_TABLEID}      ;IntelMS440GX
+
+ACPIDisableS1 = {FACP.MICRON_OEMID.TREK2SPF_TABLEID.EQ.*.*.*.1.0.0.0.0.0}, \ ;MICRONTREK2SPF01/19/00
+                {FACP.AMIINT_OEMID.AMIINT10_TABLEID.LE.LE.*.*.1000.100000b.0.0.0.0} \ ;AMIINTAMIINT1008/19/00
+
+ACPIDisableS2 = {FACP.AMIINT_OEMID.AMIINT10_TABLEID.LE.LE.*.*.1000.100000b.0.0.0.0}, \ ;AMIINTAMIINT1008/19/00
+                {FACP.DELL_OEMID.GX270_TABLEID.LT.*.*.LT.8.0.0.09.29.04}, \ ;DELLGX2709/29/04
+                {FACP.DELL_OEMID.GX260_TABLEID.LE.*.*.LE.9.0.0.11.01.04}, \ ;DELLGX26011/01/04
+                {FACP.DELL_OEMID.WS370_TABLEID.LE.*.*.LE.7.0.0.03.16.05}, \ ;DELLPREC37006/28/2005
+                {FACP.DELL_OEMID.WS650_TABLEID.LE.*.*.LE.8.0.0.03.25.04}, \ ;DELLWS65006/28/2005
+                {FACP.DELL_OEMID.WS450_TABLEID.LE.*.*.LE.8.0.0.07.21.03}    ;DELLWS45006/28/2005
+
+ACPIDisableS3 = {FACP.GATEWAY_OEMID.N0BPE040_OEMID.LE.*.*.*.20010220.0.0.0.0.0}, \ ;GatewayN0BPE040
+                {FACP.AMIINT_OEMID.AMIINT10_TABLEID.LE.LE.*.*.1000.100000b.0.0.0.0}, \ ;AMIINTAMIINT1008/19/00
+                {FACP.DELL_OEMID.GX270_TABLEID.LT.*.*.LT.8.0.0.09.29.04}, \ ;DELLGX2709/29/04
+                {FACP.DELL_OEMID.GX260_TABLEID.LE.*.*.LE.9.0.0.11.01.04}, \ ;DELLGX26011/01/04
+                {FACP.DELL_OEMID.WS370_TABLEID.LE.*.*.LE.7.0.0.03.16.05}, \ ;DELLPREC37006/28/2005
+                {FACP.DELL_OEMID.WS650_TABLEID.LE.*.*.LE.8.0.0.03.25.04}, \ ;DELLWS65006/28/2005
+                {FACP.DELL_OEMID.WS450_TABLEID.LE.*.*.LE.8.0.0.07.21.03}    ;DELLWS45006/28/2005
+
+ACPIIgnoreQWordLength = {FACP.DELL_OEMID.PE2500_TABLEID.GE.GE.*.LE.1.100000a.0.02.03.03}, \ ;DELLPE2500
+                        {FACP.DELL_OEMID.PE2650_TABLEID.GE.GE.*.LE.1.100000a.0.02.03.03}, \ ;DELLPE2650
+                        {FACP.DELL_OEMID.PE4600_TABLEID.GE.GE.*.LE.1.100000a.0.02.03.03}, \ ;DELLPE4600
+                        {FACP.DELL_OEMID.PE6600_TABLEID.GE.GE.*.LE.1.100000a.0.02.03.03}, \ ;DELLPE6600
+                        {FACP.DELL_OEMID.PE6650_TABLEID.GE.GE.*.LE.1.100000a.0.02.03.03}    ;DELLPE6650
+
+PcmciaAttributeWindowUnlimited = {FACP.COMPAQ_OEMID.WRANGLER_TABLEID.GE.*.*.*.6040000.0.0.0.0.0}, \ ;CompaqWranglerUMBConflict
+                                 {FACP.COMPAQ_OEMID.ERA_TABLEID.GE.*.*.*.6040000.0.0.0.0.0}         ;CompaqEraUMBConflict
+
+PcmciaIrqRoutingSettings1 = {FACP.TOSHIBA_OEMID}  ;ToshibaPcmciaIrqRouting
+
+DisablePStates = {FACP.AOEM_OEMID.AOEM_TABLEID.GE.GE.*.*.5000407.97.0.0.0.0}, \          ;AOEMRSDT
+                 {FACP.NVIDIA_OEMID.AWRDACPI_TABLEID.EQ.GE.GE.*.42302e31.1010101.0.0.0.0}, \ ;NVIDIAAWRDACPI01/16/04
+                 {FACP.SONY_OEMID.K5_TABLEID.GE.GE.*.*.6040000.f4240.0.0.0.0}, \         ;SONYK5
+                 {FACP.AWARD_OEMID.AWRDACPI_TABLEID.GE.GE.*.*.42302e31.0.0.0.0.0}, \     ;AWARDAWRDACPI08/19/05
+                 {FACP.INSYDE_OEMID.FACP_000_TABLEID.LE.*.*.*.00000100.0.0.0.0.0}        ;AVERATEC C3500 TH11v1.3
+
+IgnorePciRootBusNumberRange = {FACP.HP_OEMID.PROLIANT_TABLEID.GE.GE.*.*.2.162e.0.0.0.0}, \ ;HPProLiantDL380-07/22/04
+                              {FACP.HP_OEMID.P51_TABLEID.GE.GE.GE.*.2.162e.3.0.0.0},     \ ;HPP51
+                              {FACP.HP_OEMID.D17_TABLEID.GE.GE.GE.*.2.162e.3.0.0.0},     \ ;HPD17
+                              {FACP.HP_OEMID.P50_TABLEID.GE.GE.GE.*.2.162e.3.0.0.0},     \ ;HPP50
+                              {FACP.HP_OEMID.P52_TABLEID.GE.GE.GE.*.2.162e.3.0.0.0}        ;HPP52
+
+IgnoreOverlappingPciRootBusNumberRanges = {FACP.SUN_OEMID.SUNMETRO_TABLEID.GE.GE.GE.*.6040000.f4240.3.0.0.0}, \ ;PTLTD06/07/04
+                                          {FACP.AOEM_OEMID.AOEM_TABLEID.GE.GE.*.*.1000428.97.0.0.0.0}, \ ;AOEMRSDT
+                                          {FACP.AMD_OEMID.HAMMER_TABLEID.GE.GE.GE.*.6040000.f4240.3.0.0.0}, \ ;PTLTD01/13/05
+                                          {FACP.NVIDIA_OEMID.CK8S_TABLEID.GE.GE.*.*.6040000.f4240.0.0.0.0} ;PTLTD
+
+IgnoreCBMemLimits = {FACP.IBM_OEMID.TP-1O_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad R40
+                    {FACP.IBM_OEMID.TP-1P_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad R40
+                    {FACP.IBM_OEMID.TP-1Q_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad X31
+                    {FACP.IBM_OEMID.TP-1R_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad T40/T40p/T41/T41p/T42/T42p/R50/R50p/R51
+                    {FACP.IBM_OEMID.TP-1S_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad R40e
+                    {FACP.IBM_OEMID.TP-1U_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad X40
+                    {FACP.IBM_OEMID.TP-1V_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad R51
+                    {FACP.IBM_OEMID.TP-1W_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad R50e
+                    {FACP.IBM_OEMID.TP-1Y_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad T43/43p
+                    {FACP.IBM_OEMID.TP-70_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad R52/T43
+                    {FACP.IBM_OEMID.TP-74_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad X41
+                    {FACP.IBM_OEMID.TP-75_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad X41 Tablet
+                    {FACP.IBM_OEMID.TP-76_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ; ThinkPad R52
+                    {FACP.IBM_OEMID.TP-78_TABLEID.*.*.*.*.0.0.0.0.0.0}    ; ThinkPad R51e
+
+DisablePciExpressASPM = {FACP.IBM_OEMID.TP-1Y_TABLEID.GE.GE.GE.*.1060.1.3.0.0.0}, \ ;IBMTP-1Y
+                        {FACP.IBM_OEMID.TP-74_TABLEID.GE.GE.GE.*.1000.1.3.0.0.0}, \ ;IBMTP-74
+                        {FACP.DELL_OEMID.WS370_TABLEID.GE.GE.*.*.7.61.0.0.0.0},   \ ;DELLWS
+                        {FACP.IBM_OEMID.TP-75_TABLEID.GE.GE.GE.*.1020.1.3.0.0.0}, \ ;IBMTP-75
+                        {FACP.DELL_OEMID.GX620_TABLEID.GE.GE.GE.*.6.61.3.0.0.0},  \ ;DELLGX620
+                        {FACP.IBM_OEMID.TP-70_TABLEID.GE.GE.GE.*.340.1.3.0.0.0},  \ ;IBMTP-70
+                        {DSDT.FSC_OEMID.D1831_TABLEID.GE.GE.*.*.50000.2000002.0.0.0.0}, \ ;PTLTD
+                        {FACP.DELL_OEMID.GX280_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ;GX280
+                        {FACP.DELL_OEMID.WS380_TABLEID.GE.GE.GE.*.6.61.3.0.0.0}, \ ;DELLWS
+                        {FACP.COMPAQ_OEMID.LAKEPORT_TABLEID.GE.GE.*.*.1.0.0.0.0.0}, \ ;COMPAQCPQ0968
+                        {FACP.COMPAQ_OEMID.ALDERWD_TABLEID.GE.GE.*.*.1.0.0.0.0.0}, \ ;COMPAQCPQ0063
+                        {FACP.COMPAQ_OEMID.TUMWATER_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ;COMPAQCPQ0063
+                        {FACP.IBM_OEMID.TP-76_TABLEID.GE.GE.GE.*.190.1.2.0.0.0}, \ ;IBMTP-76
+                        {FACP.COMPAQ_OEMID.GRANTSD_TABLEID.*.*.*.*.0.0.0.0.0.0}, \ ;COMPAQCPQ0968
+                        {FACP.DELL_OEMID.CPIR_TABLEID.GE.GE.*.*.27d50704.61.0.0.0.0} ;DELLCPi
+
+IgnorePciSegments = {FACP.HP_OEMID.VIPER_TABLEID.GE.GE.GE.*.1.0.3.0.0.0}, \ ;HPCPQ006203/29/05
+                    {FACP.NVIDIA_OEMID.CK8S_TABLEID.GE.GE.*.*.6040000.f4240.0.0.0.0} ;PTLTD08/20/05
+
+AvoidAssertOnBadIdDataForHostBridge = {FACP.TOSFIC_OEMID.SAMBA_TABLEID.GE.GE.*.*.42302e31.0.0.0.0.0}  ;TOSFICSamba05/31/02
+
+DellNationalPC87364WorkAround = {FACP.DELL_OEMID.DIM_TABLEID.LE.LE.*.*.1.61.0.0.0.0}, \   ;DELLDIM11/30/00
+                                {FACP.DELL_OEMID.WS420_TABLEID.LE.LE.*.*.8.61.0.0.0.0}, \ ;DELLWS03/30/01-420
+                                {FACP.DELL_OEMID.WS220_TABLEID.LE.LE.*.*.8.61.0.0.0.0}    ;DELLWS03/30/01-220
+
+USBDisableSelectiveSuspend = {FACP.SONY_OEMID.U1_TABLEID.*.*.*.*.0.0.0.0.0.0}   ;SONYU103/12/01
+
+AcpiIrqDistributionStackUp = {FACP.ACER_OEMID.TM350_TABLEID.LE.*.*.*.1.0.0.0.0.0}, \              ;AcerTM35012/11/00
+                             {APIC.ASUS_OEMID.CUV4X-D_TABLEID.*.*.*.*.0.0.0.0.0.0}, \             ;ASUSCUV4X-D01/09/01
+                             {FACP.ASUS_OEMID.K7V_TABLEID.LE.*.*.*.30303031.0.0.0.0.0}, \         ;ASUSK7V05/04/00
+                             {FACP.DELL_OEMID.GX1_TABLEID.LE.*.*.*.2.0.0.0.0.0}, \                ;DELLGX107/12/00
+                             {FACP.ASUS_OEMID.K7V-RM_TABLEID.LE.*.*.*.30303031.0.0.0.0.0}, \      ;ASUSK7V-RM03/10/00
+                             {FACP.VT8371_OEMID.AWRDACPI_TABLEID.LE.*.*.*.42302e31.0.0.0.0.0}, \  ;VT8371AWRDACPI04/21/00
+                             {FACP.VT694X_OEMID.AWRDACPI_TABLEID.LE.*.*.*.0.0.0.0.0.0}, \         ;VT694XAWRDACPI01/17/00
+                             {FACP.AWARD_OEMID.AWRDACPI_TABLEID.LE.*.*.*.382d3537.0.0.0.0.0}, \   ;AWARDAWRDACPI12/29/99
+                             {FACP.MSISYS_OEMID.AWRDACPI_TABLEID.LE.LE.*.*.42302e31.0.0.0.0.0}, \ ;MSISYSAWRDACPI12/27/00
+                             {FACP.TOSHIBA_OEMID.750_TABLEID.*.*.*.*.0.0.0.0.0.0}, \              ;TOSHIB75012/30/99
+                             {FACP.VT8598_OEMID.AWRDACPI_TABLEID.LE.*.*.*.622d3339.0.0.0.0.0}, \  ;VT8598AWRDACPI11/29/00
+                             {FACP.HP_OEMID.HPBDD_IO_TABLEID.LE.*.*.*.1011.0.0.0.0.0}, \          ;HPHPBDD_IO08/31/00
+                             {FACP.INSYDE_OEMID.FACP_000_TABLEID.LE.*.*.*.00000100.0.0.0.0.0}, \  ;VIA12/07/00
+                             {FACP.IBM_OEMID.TP-X21_TABLEID.GE.GE.*.*.6040000.0.0.0.0.0}, \      ;PTLTD04/17/01
+                             {FACP.COMPAQ_OEMID.WRANGLER_TABLEID.LE.*.*.*.6040000.0.0.0.0.0}      ;COMPAQWrangler
+
+AcpiIrqRoutingStackOnIRQ9 = {FACP.IBM_OEMID.TP-X21_TABLEID.GE.GE.*.*.6040000.0.0.0.0.0}        ;PTLTD04/17/01
+
+AcpiIrqRoutingStackOnIRQ10 = {FACP.ACER_OEMID.TM350_TABLEID.LE.*.*.*.1.0.0.0.0.0}, \            ;AcerTM35012/11/00
+                             {APIC.ASUS_OEMID.CUV4X-D_TABLEID.*.*.*.*.0.0.0.0.0.0}, \           ;ASUSCUV4X-D01/09/01
+                             {FACP.HP_OEMID.HPBDD_IO_TABLEID.LE.*.*.*.1011.0.0.0.0.0}           ;HPHPBDD_IO08/31/00
+
+AcpiIrqRoutingStackOnIRQ11 = {FACP.TOSHIBA_OEMID.750_TABLEID.*.*.*.*.0.0.0.0.0.0}, \            ;TOSHIB75012/30/99
+                             {FACP.COMPAQ_OEMID.WRANGLER_TABLEID.LE.*.*.*.6040000.0.0.0.0.0}    ;COMPAQWrangler
+
+IgnoreIsaVgaBitConflict = {FACP.IBM_OEMID.SERON_TABLEID.GE.GE.*.*.1000.45444f43.0.0.0.0} ;IBMSERONYXP
+
+;
+; MSI should be disabled on platforms that have the MSI_NOT_SUPPORTED FADT boot
+; arch flag set.
+;
+
+DisableMSI = {8}
+
+DisableFastS4 = {}
+
+;
+; ACPI AMLI-specific rules
+;
+
+AMLIReturn_REV1 = {FACP.IBM_OEMID.TP-1A_TABLEID.LT.*.*.*.00001160.0.0.0.0.0}, \   ;ThinkPadT23/1AET60WW
+                  {FACP.IBM_OEMID.TP-1I_TABLEID.LT.*.*.*.00002031.0.0.0.0.0}, \   ;ThinkPadT30/T31/1IET63WW
+                  {FACP.IBM_OEMID.TP-1E_TABLEID.LT.*.*.*.00001160.0.0.0.0.0}, \   ;ThinkPadA30/A30p/1EET70WW
+                  {FACP.IBM_OEMID.TP-1G_TABLEID.LT.*.*.*.00001060.0.0.0.0.0}, \   ;ThinkPadA31/A31p/1GET34WW
+                  {FACP.IBM_OEMID.TP-1N_TABLEID.LT.*.*.*.00001030.0.0.0.0.0}, \   ;ThinkPadA31/A31p/1NET09WW
+                  {FACP.IBM_OEMID.TP-1K_TABLEID.LT.*.*.*.00001040.0.0.0.0.0}, \   ;ThinkPadX30/1KET43WW
+                  {FACP.IBM_OEMID.TP-1M_TABLEID.LT.*.*.*.00002080.0.0.0.0.0}, \   ;ThinkPadR32/1MET88WW
+                  {FACP.IBM_OEMID.TP-1O_TABLEID.LT.*.*.*.00001020.0.0.0.0.0}, \   ;ThinkPadR40/1OET36WW
+                  {FACP.IBM_OEMID.TP-1P_TABLEID.LT.*.*.*.00001090.0.0.0.0.0}, \   ;ThinkPadR40/1PET41WW
+                  {FACP.IBM_OEMID.TP-1D_TABLEID.LT.*.*.*.00001310.0.0.0.0.0}, \   ;ThinkPadX24/1DET69WW
+                  {FACP.IBM_OEMID.TP-1S_TABLEID.LT.*.*.*.00001350.0.0.0.0.0}, \   ;ThinkPadR40e/1SET67WW
+                  {FACP.AOEM_OEMID.AOEM_TABLEID.*.GE.*.*.*.97.0.0.0.0}            ;AOEMRSDT(ASUSM6B00N)
+
+AMLIIgnorePackageLengthCheck = {FACP.IBM_OEMID.SERVIGIL_TABLEID.EQ.EQ.*.*.00001000.45444f43.0.0.0.0}, \   ; IBM x440 / x445
+                               {FACP.IBM_OEMID.SERON_TABLEID.EQ.EQ.*.*.00001001.45444f43.0.0.0.0}         ; IBM x236 / x336 / x346
+
+AMLIAllowInvalidReclaimMemoryMapOnLoad = {FACP.TOSHIBA_OEMID.A003B_TABLEID.EQ.EQ.EQ.*.20030101.4010000.2.0.0.0}, \   ; Toshiba A003B
+                                         {FACP.AOEM_OEMID.AOEM_TABLEID.EQ.EQ.EQ.*.10000527.97.3.0.0.0}, \            ; AMI FADT rev3
+                                         {FACP.AOEM_OEMID.AOEM_TABLEID.EQ.EQ.EQ.*.3000516.97.2.0.0.0}, \             ; AMI FADT rev2
+                                         {FACP.AOEM_OEMID.AOEM_TABLEID.EQ.EQ.EQ.*.7000430.97.2.0.0.0}, \             ; AMI FADT rev2
+                                         {FACP.AOEM_OEMID.AOEM_TABLEID.EQ.EQ.EQ.*.9000501.97.2.0.0.0}, \             ; AMI FADT rev2
+                                         {FACP.AOEM_OEMID.AOEM_TABLEID.EQ.EQ.EQ.*.9000527.97.2.0.0.0}, \             ; AMI FADT rev2
+                                         {FACP.AOEM_OEMID.AOEM_TABLEID.EQ.EQ.*.*.2000516.97.0.0.0.0}, \              ; AMI FADT
+                                         {FACP.AOEM_OEMID.AOEM_TABLEID.EQ.EQ.*.*.3000617.97.0.0.0.0}, \              ; AMI FADT
+                                         {FACP.INSYDE_OEMID.FACP_000_TABLEID.EQ.EQ.*.*.10101.100.0.0.0.0}            ; Insyde FADT
+
+;
+; The Intel reference code for _PDC used ACPI Reclaim region for loading
+; data, which is not spec compliant and will cause a bugcheck.  This code
+; accesses the memory in a read only manner, so while it's not great that
+; the code is doing this, there are many systems using the reference code
+; which are broken and it would be daunting to get a patch. Therefore
+; detect that _PDC is going to be run, and allow this invalid access to
+; occur.  Since _PDC is deprecated in favor of _OSC moving forward, this
+; hack will eventually no longer matter.
+;
+; The AMD processors do not support _PDC, but do something similar to _PDC.
+; The process of running the _INI method detects PowerNow, and causes additional
+; name space content to load via Load method out of ACPI reclaim.
+;
+
+AMLIAllowInvalidReclaimMemoryMapOnEval = {PROCESSOR_INTEL.*.*.*.4344505f.0.0.0.0}, \
+                                         {PROCESSOR_AMD.*.*.*.494e495f.0.0.0.0}
+
+AMLIUseNamespaceOverride = {DSDT.QUALCOMM_OEMID.MSM8930_TABLEID.EQ.*.*.*.3.*.*.*.*.*}, \
+                           {DSDT.QUALCOMM_OEMID.MSM8960_TABLEID.EQ.*.*.*.3.*.*.*.*.*}
+
+;
+; These are the PCI devices that currently require hackflags.
+;
+; Numeric Args: (ROP, VVVV, DDDD, SSSS, ssss, RR, HHHHHHHH, HHHHHHHH)
+;
+;  where  ROP      : PCI Revision ID comparison operator
+;         VVVV     : Vendor ID
+;         DDDD     : Device ID
+;         SSSS     : Subsystem Vendor ID
+;         ssss     : Subsystem ID
+;         RR       : Revision ID
+;         HHHHHHHH : hackflags
+;
+; NOTE: If there are more than 1 entry for a particular vendor ID and device ID,
+;       the one with the most number of fields should always be listed *first*.
+;
+;       This is because the Errata Manager will stop evaluating the rules after
+;       the first match, so it's necessary to sort the rules so that the first match
+;       will always be the best possible match.
+;
+PCIDeviceHack = {*.1045.C621.0.0.0.00000000.00000004}, \   ;; bit 2  PCI_HACK_LOCK_RESOURCES
+                {*.1095.0640.0.0.0.00000000.00000004}, \
+                {*.8086.1230.0.0.0.00000000.00000004}, \
+                {*.8086.7010.0.0.0.00000000.00000004}, \
+                {*.104B.0140.0.0.0.00000000.00000008}, \   ;; bit 3  PCI_HACK_NO_ENUM_AT_ALL
+                {*.1179.0603.0.0.0.00000000.00000008}, \
+                {*.8086.7113.0.0.0.00000000.00000008}, \
+                {*.4978.84C5.0.0.0.00000000.00000008}, \
+                {*.1106.3040.0.0.0.00000000.00000008}, \
+                {*.0E11.1000.0.0.0.00000000.00000010}, \   ;; bit 4  PCI_HACK_ENUM_NO_RESOURCE
+                {*.0E11.2000.0.0.0.00000000.00000010}, \
+                {*.1039.0406.0.0.0.00000000.00000010}, \
+                {*.8086.0008.0.0.0.00000000.00000010}, \
+                {*.1014.0002.0.0.0.00000000.00000010}, \
+                {*.1002.4385.0.0.0.00000000.00000010}, \   ;; The HPET is embedded in a BAR on this device and
+                                                       \   ;; malfunctions if the BAR is probed.  Set this flag
+                                                       \   ;; to ensure that the PCI driver never touches the BARs
+                                                       \   ;; on this device.
+                                                       \
+                {*.8086.25E2.0.0.0.00000000.00000020}, \   ;; bit 5  PCI_HACK_AVOID_D1D2_FOR_SLD
+                {*.8086.25E3.0.0.0.00000000.00000020}, \
+                {*.8086.25E4.0.0.0.00000000.00000020}, \
+                {*.8086.25E5.0.0.0.00000000.00000020}, \
+                {*.8086.25E6.0.0.0.00000000.00000020}, \
+                {*.8086.25E7.0.0.0.00000000.00000020}, \
+                {*.8086.25F7.0.0.0.00000000.00000020}, \
+                {*.8086.25F8.0.0.0.00000000.00000020}, \
+                {*.8086.25F9.0.0.0.00000000.00000020}, \
+                {*.8086.25FA.0.0.0.00000000.00000020}, \
+                {*.1013.1100.0.0.0.00000000.00000040}, \   ;; bit 6  PCI_HACK_NEVER_DISCONNECT
+                {*.10B9.5219.0.0.0.00000000.00000080}, \   ;; bit 7  PCI_HACK_DONT_DISABLE
+                {*.1C1C.0001.0.0.0.00000000.00000100}, \   ;; bit 8  PCI_HACK_MULTIFUNCTION
+                {*.1097.0038.0.0.0.00000000.00000100}, \
+                {*.10DE.01B8.0.0.0.00000000.00000400}, \   ;; bit 10 PCI_HACK_IGNORE_NON_STICKY_ISA
+                {*.1179.0605.0.0.0.00000000.00001000}, \   ;; bit 12 PCI_HACK_DOUBLE_DECKER
+                {*.1013.1110.0.0.0.00000000.00002000}, \   ;; bit 13 PCI_HACK_ONE_CHILD
+                {*.1180.0475.0.0.0.00000000.00002000}, \   ;; Most Ricoh cardbus controllers
+                {*.1180.0478.0.0.0.00000000.00002000}, \
+                {*.1004.0101.0.0.0.00000000.00004000}, \   ;; bit 14 PCI_HACK_PRESERVE_COMMAND
+                {*.1004.0102.0.0.0.00000000.00004000}, \
+                {*.1042.1000.0.0.0.00000000.00004000}, \
+                {*.104C.8031.0.0.0.00000000.00008000}, \   ;; bit 15 PCI_HACK_DEFAULT_CARDBUS_WINDOWS
+                {*.1524.1410.0.0.0.00000000.00008000}, \
+                {*.1217.7134.0.0.0.00000000.00008000}, \
+                {*.104C.8039.0.0.0.00000000.00008000}, \
+                {*.104C.AC12.0.0.0.00000000.00010000}, \   ;; bit 16 PCI_HACK_CB_SHARE_CMD_BITS
+                {*.1180.0466.0.0.0.00000000.00010000}, \
+                {*.1014.0095.0.0.0.00000000.00040000}, \   ;; bit 18 PCI_HACK_SUBTRACTIVE_DECODE
+                {*.8086.2448.0.0.0.00000000.00040000}, \      ;; Intel ICH/ICH2 are forced into subtractive mode
+                {*.8086.244E.0.0.0.00000000.00040000}, \
+                {*.8086.2428.0.0.0.00000000.00040000}, \
+                {*.8086.2418.0.0.0.00000000.00040000}, \
+                {LE.1106.3288.0.0.f.00000000.00080000},\   ;; bit 19 PCI_HACK_NO_EXPRESS_CAP
+                {*.5333.8E10.0.0.0.00000000.00100000}, \   ;; bit 20 PCI_HACK_NO_ASPM_FOR_EXPRESS_LINK
+                {*.1002.9441.0.0.0.00000000.00100000}, \
+                {*.1002.9443.0.0.0.00000000.00100000}, \
+                {*.1002.9513.0.0.0.00000000.00100000}, \
+                {*.1002.9506.0.0.0.00000000.00100000}, \
+                {*.1002.9509.0.0.0.00000000.00100000}, \
+                {*.1002.950F.0.0.0.00000000.00100000}, \
+                {*.1022.5B64.0.0.0.00000000.00100000}, \
+                {*.1022.5B74.0.0.0.00000000.00100000}, \
+                {*.1022.3E54.0.0.0.00000000.00100000}, \
+                {*.1022.3E74.0.0.0.00000000.00100000}, \
+                {*.1022.5E48.0.0.0.00000000.00100000}, \
+                {*.1022.5E68.0.0.0.00000000.00100000}, \
+                {*.1022.4A4D.0.0.0.00000000.00100000}, \
+                {*.1022.4A6D.0.0.0.00000000.00100000}, \
+                {*.1022.5551.0.0.0.00000000.00100000}, \
+                {*.1022.5571.0.0.0.00000000.00100000}, \
+                {*.1022.5550.0.0.0.00000000.00100000}, \
+                {*.1022.5570.0.0.0.00000000.00100000}, \
+                {*.1022.5B60.0.0.0.00000000.00100000}, \
+                {*.1022.5B70.0.0.0.00000000.00100000}, \
+                {*.1022.5B65.0.0.0.00000000.00100000}, \
+                {*.1022.5B75.0.0.0.00000000.00100000}, \
+                {*.1022.5B63.0.0.0.00000000.00100000}, \
+                {*.1022.5B73.0.0.0.00000000.00100000}, \
+                {*.1022.5B66.0.0.0.00000000.00100000}, \
+                {*.1022.5B76.0.0.0.00000000.00100000}, \
+                {*.1022.5B61.0.0.0.00000000.00100000}, \
+                {*.1022.5B71.0.0.0.00000000.00100000}, \
+                {*.1022.3E50.0.0.0.00000000.00100000}, \
+                {*.1022.3E70.0.0.0.00000000.00100000}, \
+                {*.1022.5B62.0.0.0.00000000.00100000}, \
+                {*.1022.5B72.0.0.0.00000000.00100000}, \
+                {*.1022.5E4A.0.0.0.00000000.00100000}, \
+                {*.1022.5E4B.0.0.0.00000000.00100000}, \
+                {*.1022.5E4C.0.0.0.00000000.00100000}, \
+                {*.1022.5E4D.0.0.0.00000000.00100000}, \
+                {*.1022.5E4F.0.0.0.00000000.00100000}, \
+                {*.1022.5E6A.0.0.0.00000000.00100000}, \
+                {*.1022.5E6B.0.0.0.00000000.00100000}, \
+                {*.1022.5E6C.0.0.0.00000000.00100000}, \
+                {*.1022.5E6D.0.0.0.00000000.00100000}, \
+                {*.1022.5E6F.0.0.0.00000000.00100000}, \
+                {*.1022.4A49.0.0.0.00000000.00100000}, \
+                {*.1022.4A69.0.0.0.00000000.00100000}, \
+                {*.1022.4A4B.0.0.0.00000000.00100000}, \
+                {*.1022.4A6B.0.0.0.00000000.00100000}, \
+                {*.1022.4A4A.0.0.0.00000000.00100000}, \
+                {*.1022.4A6A.0.0.0.00000000.00100000}, \
+                {*.1022.4A50.0.0.0.00000000.00100000}, \
+                {*.1022.4A70.0.0.0.00000000.00100000}, \
+                {*.1022.4A4F.0.0.0.00000000.00100000}, \
+                {*.1022.4A6F.0.0.0.00000000.00100000}, \
+                {*.1022.4A48.0.0.0.00000000.00100000}, \
+                {*.1022.4A4C.0.0.0.00000000.00100000}, \
+                {*.1022.4A68.0.0.0.00000000.00100000}, \
+                {*.1022.4A6C.0.0.0.00000000.00100000}, \
+                {*.1022.5549.0.0.0.00000000.00100000}, \
+                {*.1022.5569.0.0.0.00000000.00100000}, \
+                {*.1022.554B.0.0.0.00000000.00100000}, \
+                {*.1022.556B.0.0.0.00000000.00100000}, \
+                {*.1022.5548.0.0.0.00000000.00100000}, \
+                {*.1022.5568.0.0.0.00000000.00100000}, \
+                {*.1022.5D57.0.0.0.00000000.00100000}, \
+                {*.1022.5D77.0.0.0.00000000.00100000}, \
+                {*.1022.554A.0.0.0.00000000.00100000}, \
+                {*.1022.556A.0.0.0.00000000.00100000}, \
+                {*.1022.554D.0.0.0.00000000.00100000}, \
+                {*.1022.556D.0.0.0.00000000.00100000}, \
+                {*.1022.554F.0.0.0.00000000.00100000}, \
+                {*.1022.556F.0.0.0.00000000.00100000}, \
+                {*.1022.554E.0.0.0.00000000.00100000}, \
+                {*.1022.556E.0.0.0.00000000.00100000}, \
+                {*.1022.554C.0.0.0.00000000.00100000}, \
+                {*.1022.556C.0.0.0.00000000.00100000}, \
+                {*.1022.5D52.0.0.0.00000000.00100000}, \
+                {*.1022.5D72.0.0.0.00000000.00100000}, \
+                {*.1022.5D4F.0.0.0.00000000.00100000}, \
+                {*.1022.5D6F.0.0.0.00000000.00100000}, \
+                {*.1022.5D4D.0.0.0.00000000.00100000}, \
+                {*.1022.5D6D.0.0.0.00000000.00100000}, \
+                {*.1022.5D4E.0.0.0.00000000.00100000}, \
+                {*.1022.5D6E.0.0.0.00000000.00100000}, \
+                {*.1022.5D4C.0.0.0.00000000.00100000}, \
+                {*.1022.5D6C.0.0.0.00000000.00100000}, \
+                {*.1022.4B4B.0.0.0.00000000.00100000}, \
+                {*.1022.4B6B.0.0.0.00000000.00100000}, \
+                {*.1022.4B4A.0.0.0.00000000.00100000}, \
+                {*.1022.4B6A.0.0.0.00000000.00100000}, \
+                {*.1022.4B49.0.0.0.00000000.00100000}, \
+                {*.1022.4B69.0.0.0.00000000.00100000}, \
+                {*.1022.4B4C.0.0.0.00000000.00100000}, \
+                {*.1022.4B6C.0.0.0.00000000.00100000}, \
+                {*.1022.5D50.0.0.0.00000000.00100000}, \
+                {*.1022.5D70.0.0.0.00000000.00100000}, \
+                {*.1022.7108.0.0.0.00000000.00100000}, \
+                {*.1022.7109.0.0.0.00000000.00100000}, \
+                {*.1022.710A.0.0.0.00000000.00100000}, \
+                {*.1022.710B.0.0.0.00000000.00100000}, \
+                {*.1022.710C.0.0.0.00000000.00100000}, \
+                {*.1022.7128.0.0.0.00000000.00100000}, \
+                {*.1022.7129.0.0.0.00000000.00100000}, \
+                {*.1022.712A.0.0.0.00000000.00100000}, \
+                {*.1022.712B.0.0.0.00000000.00100000}, \
+                {*.1022.712C.0.0.0.00000000.00100000}, \
+                {*.1022.7120.0.0.0.00000000.00100000}, \
+                {*.1022.7104.0.0.0.00000000.00100000}, \
+                {*.1022.7105.0.0.0.00000000.00100000}, \
+                {*.1022.7124.0.0.0.00000000.00100000}, \
+                {*.1022.7125.0.0.0.00000000.00100000}, \
+                {*.1022.5460.0.0.0.00000000.00100000}, \
+                {*.1022.5461.0.0.0.00000000.00100000}, \
+                {*.1022.3150.0.0.0.00000000.00100000}, \
+                {*.1022.5653.0.0.0.00000000.00100000}, \
+                {*.1022.5652.0.0.0.00000000.00100000}, \
+                {*.1022.564F.0.0.0.00000000.00100000}, \
+                {*.1022.5D4A.0.0.0.00000000.00100000}, \
+                {*.1022.5D48.0.0.0.00000000.00100000}, \
+                {*.1022.5673.0F03.1002.0.00000000.00100000}, \
+                {*.1022.3152.0.0.0.00000000.00100000}, \
+                {*.1022.5462.0.0.0.00000000.00100000}, \
+                {*.1022.5464.0.0.0.00000000.00100000}, \
+                {*.1022.3154.0.0.0.00000000.00100000}, \
+                {*.1022.564A.0.0.0.00000000.00100000}, \
+                {*.1022.564B.0.0.0.00000000.00100000}, \
+                {*.1022.5D49.0.0.0.00000000.00100000}, \
+                {*.111D.8060.0.0.0.00000000.00100000}, \
+                {*.111D.8061.0.0.0.00000000.00100000}, \
+                {*.111D.8028.0.0.0.00000000.00100000}, \
+                {*.111D.8029.0.0.0.00000000.00100000}, \
+                {*.111D.802A.0.0.0.00000000.00100000}, \
+                {*.111D.802B.0.0.0.00000000.00100000}, \
+                {*.111D.802C.0.0.0.00000000.00100000}, \
+                {*.111D.802D.0.0.0.00000000.00100000}, \
+                {*.111D.802E.0.0.0.00000000.00100000}, \
+                {*.111D.802F.0.0.0.00000000.00100000}, \
+                {*.111D.8030.0.0.0.00000000.00100000}, \
+                {*.111D.8031.0.0.0.00000000.00100000}, \
+                {*.111D.8032.0.0.0.00000000.00100000}, \
+                {*.111D.8033.0.0.0.00000000.00100000}, \
+                {*.111D.8034.0.0.0.00000000.00100000}, \
+                {*.111D.8035.0.0.0.00000000.00100000}, \
+                {*.111D.8036.0.0.0.00000000.00100000}, \
+                {*.111D.8037.0.0.0.00000000.00100000}, \
+                {*.111D.8038.0.0.0.00000000.00100000}, \
+                {*.111D.8039.0.0.0.00000000.00100000}, \
+                {*.111D.803A.0.0.0.00000000.00100000}, \
+                {*.111D.803B.0.0.0.00000000.00100000}, \
+                {*.111D.803C.0.0.0.00000000.00100000}, \
+                {*.111D.803D.0.0.0.00000000.00100000}, \
+                {*.111D.803E.0.0.0.00000000.00100000}, \
+                {*.111D.803F.0.0.0.00000000.00100000}, \
+                {*.8086.2772.0.0.0.00000000.00200000}, \   ;; bit 21 PCI_HACK_CLEAR_INT_DISABLE_FOR_MSI
+                {*.8086.27A2.0.0.0.00000000.00200000}, \
+                {*.1002.4747.0.0.0.00000000.00400000}, \   ;; bit 22 PCI_HACK_NO_SUBSYSTEM
+                {*.1013.00D6.1018.80D6.0.00000000.00000000}, \  ;; this device with this particular subsystem ID doesn't need the hackflags, so we put it first
+                {*.1013.00D6.0.0.0.00000000.00400000}, \
+                {*.104C.AC15.0.0.0.00000000.00400000}, \
+                {*.110B.0004.0.0.0.00000000.00400000}, \
+                {*.1000.000F.0.0.0.00000000.00400000}, \
+                {*.104C.AC17.0.0.0.00000000.00400000}, \
+                {*.1023.9397.0.0.0.00000000.00400000}, \
+                {*.1002.4742.0.0.0.00000000.00400000}, \
+                {*.1002.4744.0.0.0.00000000.00400000}, \
+                {*.1002.4749.0.0.0.00000000.00400000}, \
+                {*.1002.4750.0.0.0.00000000.00400000}, \
+                {*.1002.4751.0.0.0.00000000.00400000}, \
+                {*.1002.4755.0.0.0.00000000.00400000}, \
+                {*.1002.4C42.0.0.0.00000000.00400000}, \
+                {*.1002.4C44.0.0.0.00000000.00400000}, \
+                {*.1002.4C47.0.0.0.00000000.00400000}, \
+                {*.1002.4C49.0.0.0.00000000.00400000}, \
+                {*.1002.4C50.0.0.0.00000000.00400000}, \
+                {*.1002.4C51.0.0.0.00000000.00400000}, \
+                {*.1002.5655.0.0.0.00000000.00400000}, \
+                {*.1002.5656.0.0.0.00000000.00400000}, \
+                {*.121A.0003.0.0.0.00000000.00400000}, \
+                {*.1045.C861.1045.C861.0.00000000.00400000}, \
+                {*.1045.C861.107B.9300.0.00000000.00400000}, \
+                {*.1407.0110.0.0.0.00000000.00800000}, \   ;; bit 23 PCI_HACK_COMMAND_REWRITE
+                {*.1407.0111.0.0.0.00000000.00800000}, \
+                {*.1217.6729.0.0.0.00000000.01000000}, \   ;; bit 24 PCI_HACK_AVOID_HARDWARE_ISA_BIT
+                {*.1217.673A.0.0.0.00000000.01000000}, \   ;;
+                {*.1217.6832.0.0.0.00000000.01000000}, \   ;; All devices from O2 Micro generally require this
+                {*.1217.6836.0.0.0.00000000.01000000}, \   ;; bit to be set (vendor 0x1217).
+                {*.1217.6872.0.0.0.00000000.01000000}, \
+                {*.1217.6925.0.0.0.00000000.01000000}, \
+                {*.1217.6933.0.0.0.00000000.01000000}, \
+                {*.1217.6972.0.0.0.00000000.01000000}, \
+                {*.1217.7110.0.0.0.00000000.01000000}, \
+                {*.1217.7112.0.0.0.00000000.01000000}, \
+                {*.1217.7113.0.0.0.00000000.01000000}, \
+                {*.1217.7114.0.0.0.00000000.01000000}, \
+                {*.1217.71E2.0.0.0.00000000.01000000}, \
+                {*.1217.7212.0.0.0.00000000.01000000}, \
+                {*.1217.7213.0.0.0.00000000.01000000}, \
+                {*.1217.7223.0.0.0.00000000.01000000}, \
+                {*.1022.7458.0.0.0.00000000.04000000}, \   ;; bit 26 PCI_HACK_NOT_MSI_HT_CONVERTER
+                {*.1091.07A0.0.0.0.00000000.20000000}, \   ;; bit 29 PCI_HACK_NO_PM_CAPS
+                {*.8086.7800.0.0.0.00000000.20000000}, \
+                {*.10c8.8005.0.0.0.00000000.20000000}, \
+                {*.10c8.8006.0.0.0.00000000.20000000}, \
+                {*.10c8.0005.0.0.0.00000000.20000000}, \
+                {*.10c8.0006.0.0.0.00000000.20000000}, \
+                {*.10DD.0100.0.0.0.00000000.20000000}, \      ;; E&S graphics adapter
+                {*.1095.0670.0.0.0.00000000.20000000}, \      ;; CMD Devices
+                {*.1095.0646.0.0.0.00000000.20000000}, \      ;; CMD Devices
+                {*.1095.0648.0.0.0.00000000.20000000}, \      ;; CMD IDE controller that turns into a Raid controller
+                                                       \      ;; after D3->D0
+                {*.10C8.8005.0.0.0.00000000.20000000}, \      ;; NMA2 Audio
+                {*.1011.0026.0.0.0.00000000.20000000}, \      ;; Intel 64bit power managed bridge.  This device forgets
+                {*.8086.B154.0.0.0.00000000.20000000}, \      ;; its on a 64bit bus when D3->D0 and appears to corrupt bus traffic there after.
+                                                       \      ;; Bug 411282 (in both DEC and intel vendor ID variants)
+                {*.5333.8904.0.0.0.00000000.20000000}, \
+                {*.1106.8605.0.0.0.00000000.20000000}, \      ;; VIA AGP Bridges - Raid #401073
+                {*.1106.8598.0.0.0.00000000.20000000}, \      ;; VIA AGP Bridges - Raid #401073
+                {*.1014.01A7.0.0.0.00000000.20000000}, \
+                {*.8086.0326.0.0.0.00000000.20000000}, \      ;; Intel PXH devices - PXH may become unresponsive after D3 transition
+                {*.8086.0327.0.0.0.00000000.20000000}, \
+                {*.8086.0329.0.0.0.00000000.20000000}, \
+                {*.8086.032A.0.0.0.00000000.20000000}, \
+                {*.8086.032C.0.0.0.00000000.20000000}, \
+                {*.1002.4D52.0.0.0.00000000.20000000}, \      ;; ATI's dual Rio capture card
+                {*.10CF.1263.0.0.0.00000000.20000000}, \      ;; Fujitsu's chipset
+                {*.1179.0609.0.0.0.00000000.40000000}, \      ;; A Toshiba docking bridge - if we turn off the decodes as part of an APM suspend then
+                                                       \      ;; the BIOS fails the resume because it can't see the floppy controller in the dock.
+                {*.1014.0047.0.0.0.00000000.40000000}, \      ;; APM docking issue with IBM machines - If we reset the bridge, the PIIX IDE contoller
+                                                       \      ;; they have hidden in config space apprears, and is resetted so the channels are disabled
+                                                       \      ;; and the IDE devices are removed.
+                {*.1002.4391.1028.0480.0.00000000.40000000}, \ ;; AMD storage controller that gains a non-functional MSI capability after a DX->D0 
+                                                             \ ;; transition
+                {*.102B.051B.0.0.0.00000000.80000000}, \   ;; bit 31 PCI_HACK_NO_SUBSYSTEM_AFTER_D3
+                {*.102B.0520.0.0.0.00000000.80000000}, \
+                {*.102B.0521.0.0.0.00000000.80000000}, \
+                {*.102B.1025.0.0.0.00000000.80000000}, \
+                {*.102B.0525.0.0.0.00000000.80000000}, \
+                {*.102B.2527.0.0.0.00000000.80000000}, \
+                {*.102B.2537.0.0.0.00000000.80000000}, \
+                {*.102B.0527.0.0.0.00000000.80000000}, \
+                {*.102B.0528.0.0.0.00000000.80000000}, \
+                {*.8086.7121.0.0.0.00000000.80000000}, \
+                {*.8086.7123.0.0.0.00000000.80000000}, \
+                {*.8086.7125.0.0.0.00000000.80000000}, \
+                {*.8086.1132.0.0.0.00000000.80000000}, \
+                {*.9005.0050.0.0.0.00000000.80000000}, \
+                {*.9005.005F.0.0.0.00000000.80000000}, \
+                {*.1002.4752.0.0.0.00000000.80000000}, \
+                {*.1002.474F.0.0.0.00000000.80000000}, \
+                {*.1002.474D.0.0.0.00000000.80000000}, \
+                {*.1002.4753.0.0.0.00000000.80000000}, \
+                {*.1002.474C.0.0.0.00000000.80000000}, \
+                {*.1002.474E.0.0.0.00000000.80000000}, \
+                {*.1002.4C4D.0.0.0.00000000.80000000}, \
+                {*.1002.4C4E.0.0.0.00000000.80000000}, \
+                {*.1002.4C52.0.0.0.00000000.80000000}, \
+                {*.1002.4C53.0.0.0.00000000.80000000}, \
+                {*.1002.5A34.0.0.0.00000000.80000000}, \
+                {*.1023.9880.0.0.0.00000000.80000000}, \
+                {*.10DE.00A0.0.0.0.00000000.80000000}, \
+                {*.10DE.00A1.0.0.0.00000000.80000000}, \
+                {*.10DE.00A3.0.0.0.00000000.80000000}, \
+                {*.10DE.00B0.0.0.0.00000000.80000000}, \
+                {*.10DE.00B1.0.0.0.00000000.80000000}, \
+                {*.10DE.00B3.0.0.0.00000000.80000000}, \
+                {*.10DE.0100.0.0.0.00000000.80000000}, \
+                {*.10DE.0101.0.0.0.00000000.80000000}, \
+                {*.10DE.0102.0.0.0.00000000.80000000}, \
+                {*.10DE.0103.0.0.0.00000000.80000000}, \
+                {*.10DE.0120.0.0.0.00000000.80000000}, \
+                {*.10DE.0121.0.0.0.00000000.80000000}, \
+                {*.10DE.0122.0.0.0.00000000.80000000}, \
+                {*.10DE.0123.0.0.0.00000000.80000000}, \
+                {*.10DE.0150.0.0.0.00000000.80000000}, \
+                {*.10DE.0151.0.0.0.00000000.80000000}, \
+                {*.10DE.0152.0.0.0.00000000.80000000}, \
+                {*.10DE.0153.0.0.0.00000000.80000000}, \
+                {*.10DE.0161.0.0.0.00000000.80000000}, \
+                {*.10DE.0200.0.0.0.00000000.80000000}, \
+                {*.10DE.0201.0.0.0.00000000.80000000}, \
+                {*.10DE.0202.0.0.0.00000000.80000000}, \
+                {*.10DE.0203.0.0.0.00000000.80000000}, \
+                {*.10DE.0260.0.0.0.00000000.80000000}, \
+                {*.12D2.0018.0.0.0.00000000.80000000}, \
+                {*.12D2.0019.0.0.0.00000000.80000000}, \
+                {*.1013.6003.0.0.0.00000000.80000000}, \
+                {*.3D3D.000A.0.0.0.00000000.80000000}, \
+                {*.1106.3065.0.0.0.00000000.80000000}, \
+                {*.1002.4158.0.0.0.00000001.00000000}, \   ;; bit 32 PCI_HACK_VIDEO_LEGACY_DECODE
+                {*.1002.4354.0.0.0.00000001.00000000}, \
+                {*.1002.4358.0.0.0.00000001.00000000}, \
+                {*.1002.4554.0.0.0.00000001.00000000}, \
+                {*.1002.4758.0.0.0.00000001.00000000}, \
+                {*.1002.4C54.0.0.0.00000001.00000000}, \
+                {*.5333.8810.0.0.0.00000001.00000000}, \
+                {*.5333.8811.0.0.0.00000001.00000000}, \
+                {*.5333.8812.0.0.0.00000001.00000000}, \
+                {*.5333.8814.0.0.0.00000001.00000000}, \
+                {*.5333.8880.0.0.0.00000001.00000000}, \
+                {*.5333.88B0.0.0.0.00000001.00000000}, \
+                {*.5333.88C0.0.0.0.00000001.00000000}, \
+                {*.5333.88C1.0.0.0.00000001.00000000}, \
+                {*.5333.88D0.0.0.0.00000001.00000000}, \
+                {*.5333.88D1.0.0.0.00000001.00000000}, \
+                {*.5333.88F0.0.0.0.00000001.00000000}, \
+                {*.5333.8902.0.0.0.00000001.00000000}, \
+                {*.0E11.B109.0.0.0.00000002.00000000}, \   ;; bit 33 PCI_HACK_FAKE_CLASS_CODE
+                {*.8086.2653.1179.0F10.0.00000002.00000000}, \  ;; Remove AHCI class code on Toshiba RAID (next 4 entries)
+                {*.8086.2653.1179.0F00.0.00000002.00000000}, \
+                {*.8086.27C5.1179.0F10.0.00000002.00000000}, \
+                {*.8086.27C5.1179.0F00.0.00000002.00000000}, \
+                {*.8086.27C5.1179.0F03.0.00000002.00000000}, \
+                {*.8086.27C5.1179.0F13.0.00000002.00000000}, \
+                {*.8086.27C5.1179.FF01.0.00000002.00000000}, \
+                {*.8086.2829.1179.0F03.0.00000002.00000000}, \
+                {*.8086.2829.1179.0F13.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF01.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF02.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF03.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF04.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF11.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF12.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF13.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF14.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF31.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF32.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF33.0.00000002.00000000}, \
+                {*.8086.2829.1179.FF34.0.00000002.00000000}, \
+                {*.14E4.1648.0.0.0.00000100.00000000}, \   ;; bit 40 PCI_HACK_NO_REVISION_AFTER_D3
+                {*.14E4.4357.14e4.0570.0.0.00100000}, \     ;; PCI_HACK_NO_ASPM_FOR_EXPRESS_LINK
+                {*.8086.2660.0.0.0.00000800.00000000}, \    ;; PCI_HACK_DISABLE_HOT_PLUG (ICH6 Family) PCI Express Port 1
+                {*.8086.2662.0.0.0.00000800.00000000}, \    ;;                           (ICH6 Family) PCI Express Port 2
+                {*.8086.2664.0.0.0.00000800.00000000}, \    ;;                           (ICH6 Family) PCI Express Port 3
+                {*.8086.2666.0.0.0.00000800.00000000}, \    ;;                           (ICH6 Family) PCI Express Port 4
+                {*.8086.27d0.0.0.0.00000800.00000000}, \    ;;                           (ICH7 Family) PCI Express Port 1
+                {*.8086.27d2.0.0.0.00000800.00000000}, \    ;;                           (ICH7 Family) PCI Express Port 2
+                {*.8086.27d4.0.0.0.00000800.00000000}, \    ;;                           (ICH7 Family) PCI Express Port 3
+                {*.8086.27d6.0.0.0.00000800.00000000}, \    ;;                           (ICH7 Family) PCI Express Port 4
+                {*.8086.27e0.0.0.0.00000800.00000000}, \    ;;                           (ICH7 Family) PCI Express Port 5
+                {*.8086.27e2.0.0.0.00000800.00000000}, \    ;;                           (ICH7 Family) PCI Express Port 6
+                {*.8086.283f.0.0.0.00000800.00000000}, \    ;;                           (ICH8 Family) PCI Express Port 1
+                {*.8086.2841.0.0.0.00000800.00000000}, \    ;;                           (ICH8 Family) PCI Express Port 2
+                {*.8086.2843.0.0.0.00000800.00000000}, \    ;;                           (ICH8 Family) PCI Express Port 3
+                {*.8086.2845.0.0.0.00000800.00000000}, \    ;;                           (ICH8 Family) PCI Express Port 4
+                {*.8086.2847.0.0.0.00000800.00000000}, \    ;;                           (ICH8 Family) PCI Express Port 5
+                {*.8086.2849.0.0.0.00000800.00000000}, \    ;;                           (ICH8 Family) PCI Express Port 6
+                {*.8086.2940.0.0.0.00000800.00000000}, \    ;;                           (ICH9 Family) PCI Express Port 1
+                {*.8086.2942.0.0.0.00000800.00000000}, \    ;;                           (ICH9 Family) PCI Express Port 2
+                {*.8086.2944.0.0.0.00000800.00000000}, \    ;;                           (ICH9 Family) PCI Express Port 3
+                {*.8086.2946.0.0.0.00000800.00000000}, \    ;;                           (ICH9 Family) PCI Express Port 4
+                {*.8086.2948.0.0.0.00000800.00000000}, \    ;;                           (ICH9 Family) PCI Express Port 5
+                {*.8086.294a.0.0.0.00000800.00000000}, \    ;;                           (ICH9 Family) PCI Express Port 6
+                {*.8086.27a1.0.0.0.00000800.00000000}, \    ;;                           Mobile 945GM/PM/GMS, 943/940GML and 945GT Express PCI Express Root Port
+                {*.8086.27ad.0.0.0.00000800.00000000}, \    ;;                           Mobile 945GME Express PCI Express Root Port
+                {*.8086.2a01.0.0.0.00000800.00000000}, \    ;;                           Mobile PM965/GM965/GL960 PCI Express Root Port
+                {*.8086.2a11.0.0.0.00000800.00000000}, \    ;;                           Mobile GME965/GLE960 PCI Express Root Port
+                {*.8086.2a41.0.0.0.00000800.00000000}, \    ;;                           Mobile 4 Series Chipset PCI Express Graphics Port
+                {*.8086.3a40.0.0.0.00000800.00000000}, \    ;;                           (ICH10 Family) PCI Express Port 1 (Consumer)
+                {*.8086.3a42.0.0.0.00000800.00000000}, \    ;;                           (ICH10 Family) PCI Express Port 2 (Consumer)
+                {*.8086.3a44.0.0.0.00000800.00000000}, \    ;;                           (ICH10 Family) PCI Express Port 3 (Consumer)
+                {*.8086.3a46.0.0.0.00000800.00000000}, \    ;;                           (ICH10 Family) PCI Express Port 4 (Consumer)
+                {*.8086.3a48.0.0.0.00000800.00000000}, \    ;;                           (ICH10 Family) PCI Express Port 5 (Consumer)
+                {*.8086.3a4a.0.0.0.00000800.00000000}, \    ;;                           (ICH10 Family) PCI Express Port 6 (Consumer)
+                {*.1106.a327.0.0.0.00001000.00000000}, \    ;; bit 44 PCI_HACK_IGNORE_AER_CAPABILITY
+                {*.1106.c327.0.0.0.00001000.00000000}, \    ;;
+                {*.1106.a238.0.0.0.00001000.00000000}, \    ;;
+                {*.1106.c238.0.0.0.00001000.00000000}, \    ;;
+                {*.1106.d238.0.0.0.00001000.00000000}, \    ;;
+                {*.1106.e238.0.0.0.00001000.00000000}, \    ;;
+                {*.1106.f238.0.0.0.00001000.00000000}, \    ;;
+                                                       \
+                {*.100C.3202.0.0.0.00000000.00008200}, \   ;; multibit section below
+                {*.8086.0482.0.0.0.00000000.00004010}, \   ;; BUGBUG(andrewth) - hack to make Compaq Proliant 5000's boot (don't turn on 2nd EISA bridge). (until post Beta2)
+                {*.1180.0476.0.0.0.00000000.0000a000}, \
+                {*.111D.8018.0.0.0.00000080.00100400}, \   ;; PCI_HACK_IGNORE_NON_STICKY_ISA, PCI_HACK_NO_ASPM_FOR_EXPRESS_LINK, PCI_HACK_EXPRESS_VERSION_IS_2
+                {*.103C.403B.0.0.0.00000000.18000000}, \   ;; bit 27 PCI_HACK_SBR_ON_LINK_STATE_CHANGE and bit 28 PCI_HACK_LINK_DISABLE_ON_SLOT_PWRDN
+                {*.10B5.8532.0.0.0.00000000.20100000}, \  ;; PCI_HACK_NO_ASPM_FOR_EXPRESS_LINK + PCI_HACK_NO_PM_CAPS
+                {*.10B5.8516.0.0.0.00000000.20100000}, \
+                {*.10B5.8547.0.0.0.00000000.20100000}, \
+                {*.10B5.8647.0.0.0.00000000.20100000}, \
+                {*.10B5.8648.0.0.0.00000000.20100000}, \
+                {*.1045.C814.0.0.0.00000000.20400000}, \
+                {*.1002.4756.0.0.0.00000000.20400000}, \
+                {*.1002.4757.0.0.0.00000000.20400000}, \
+                {*.1002.4759.0.0.0.00000000.20400000}, \
+                {*.1002.475A.0.0.0.00000000.20400000}, \
+                {*.1002.5654.0.0.0.00000001.00400000}, \
+                {*.1002.4754.0.0.0.00000001.00400000}, \
+                {*.5333.8901.0.0.0.00000001.00400000}, \
+                {*.1000.000B.0.0.0.00000000.a0000000}, \
+                {*.102B.1001.0.0.0.00000000.a0000000}, \
+                {*.10DE.0020.0.0.0.00000000.a0000000}, \
+                {*.10DE.0028.0.0.0.00000000.a0000000}, \
+                {*.10DE.0029.0.0.0.00000000.a0000000}, \
+                {*.10DE.002A.0.0.0.00000000.a0000000}, \
+                {*.10DE.002B.0.0.0.00000000.a0000000}, \
+                {*.10DE.002C.0.0.0.00000000.a0000000}, \
+                {*.10DE.002D.0.0.0.00000000.a0000000}, \
+                {*.10DE.002E.0.0.0.00000000.a0000000}, \
+                {*.10DE.002F.0.0.0.00000000.a0000000}, \
+                {*.111D.801C.0.0.0.00000000.10100400}, \    ;; bit 10 PCI_HACK_IGNORE_NON_STICKY_ISA, bit 20 PCI_HACK_NO_ASPM_FOR_EXPRESS_LINK and bit 28 PCI_HACK_LINK_DISABLE_ON_SLOT_PWRDN
+                {*.1106.287c.0.0.0.00001000.00020000}, \    ;; bit 17 PCI_HACK_IGNORE_ROOT_TOPOLOGY, bit 44 PCI_HACK_IGNORE_AER_CAPABILITY
+                {*.1106.287d.0.0.0.00001000.00020000}, \
+                {*.1657.0014.0.0.0.00008000.00000000}, \    ;; PCI_HACK_MSIX_TABLE_OFF_BY_ONE
+                {*.1657.0021.0.0.0.00008000.00000000}
+
+
+
+;
+; Hack flag: 00000000.00000800
+;
+; Set a hack flag to ignore the boot config for these chipset-integrated bridge.
+; On previous versions of the operating system, this bridge was considered to be
+; subtractive decode, so its windows were ignored.  This is no longer the case,
+; and the BIOS configures the windows to claim enormous quantities of address
+; space.  With this BIOS, ignore the obviously incorrect BIOS configuration.
+;
+
+;
+; Hack flag: 00000000.02000000
+;
+; Set a hack flag to force a bridge window alignment to match the length of its
+; preferred bridge window size.
+;
+
+;
+; Hack flag: 00000010.00000000
+;
+; Set a hack flag to fail query remove on pci device.
+;
+
+;
+; Hack flag: 00000400.00000000
+;
+; Set a hack flag to disable power management downstream of a pci bridge.
+;
+
+;
+; Hack flag: 00000000.00400000
+;
+; Set a hack flag to ignore subsystem vendor/device ids.
+;
+
+;
+; Hack flag: 00004000.00000000
+;
+; Set a hack flag to not support wake from Dx. Some BIOS has subtle bugs which prevent PCI/e devices from waking from idle.
+;
+
+;
+; These are the PCI devices that require more time on resume from a low-power
+; state.
+;
+; Numeric Args: (ROP, VVVV, DDDD, SSSS, ssss, RR, TTTTTTTT)
+;
+;  where  ROP      : PCI Revision ID comparison operator
+;         VVVV     : Vendor ID
+;         DDDD     : Device ID
+;         SSSS     : Subsystem Vendor ID
+;         ssss     : Subsystem ID
+;         RR       : Revision ID
+;         TTTTTTTT : time in milliseconds (hexadecimal)
+;
+; NOTE: If there are more than 1 entry for a particular vendor ID and device ID,
+;       the one with the most number of fields should always be listed *first*.
+;
+;       This is because the Errata Manager will stop evaluating the rules after
+;       the first match, so it's necessary to sort the rules so that the first match
+;       will always be the best possible match.
+;
+PCIDeviceD0Delay =  {*.197b.2360.0.0.0.00000120},       \
+                    {EQ.1b73.1100.1b73.1100.0.00000200},\       ; Fresco Logic XHCI controller
+                    {*.1414.0010.0001.0021.0.00000010}, \       ; This is a Microsoft-owned ID in place for testing the code
+                    {*.1414.0010.0001.0022.0.00000500}          ; This is a Microsoft-owned ID in place for testing the code
+
+; Override for Maximum Packet Size misreported. Dell Disk Controller.
+PCIDeviceMpsSize = {EQ.1000.002F.1F3E.1028.05.00000003}
+
+PCIDeviceHackBiosMatch = \
+    {FACP.HP_OEMID.RX2800-2_TABLEID.*.*.*.*.*.0.0.0.0.0.0.8086.3A4A.0.0.0.00000000.00000080}, \                    ; Intel RP above HP iL03 on Sentosa
+    {FACP.HP_OEMID.BL860C-2_TABLEID.*.*.*.*.*.0.0.0.0.0.0.8086.3408.0.0.0.00000000.00000080}, \                    ; Intel RP above HP iL03 on Kauai/COP1
+    {FACP.HP_OEMID.BL870C-2_TABLEID.*.*.*.*.*.0.0.0.0.0.0.8086.3408.0.0.0.00000000.00000080}, \                    ; Intel RP above HP iL03 on Kauai/COP1
+    {FACP.HP_OEMID.BL890C-2_TABLEID.*.*.*.*.*.0.0.0.0.0.0.8086.3408.0.0.0.00000000.00000080}, \                    ; Intel RP above HP iL03 on Kauai/COP1
+    {FACP.AOEM_OEMID.AOEM_TABLEID.GE.GE.*.*.*.9000402.97.0.0.0.0.1002.4342.0.0.0.00000000.00000800}, \             ; ATI hub bridge + AMI bios
+    {FACP.AOEM_OEMID.AOEM_TABLEID.GE.GE.*.*.*.3000517.97.0.0.0.0.1002.4342.0.0.0.00000000.00000800}, \             ; ATI hub bridge + AMI bios
+    {FACP.DELL_OEMID.CPIR_TABLEID.GE.GE.*.*.*.27d50907.61.0.0.0.0.8086.2448.0.0.0.00000000.00000800},\             ; Intel hub to PCI bridge + DELL bios
+    {FACP.DELL_OEMID.4550_TABLEID.GE.GE.*.*.*.8.61.0.0.0.0.8086.244e.0.0.0.00000000.00000800}, \                   ; DELL bios subtractive bridge
+    {FACP.041111_OEMID.1651_TABLEID.*.*.*.*.*.0.0.0.0.0.0.1033.0194.0.0.0.00004000.00000000}, \                    ; NEC Renesas + ASUS bios
+    {FACP.ASUS2_OEMID.NOTEBOOK_TABLEID.*.*.*.*.*.0.0.0.0.0.0.1033.0194.0.0.0.00004000.00000000}, \                 ; NEC Renesas + ASUS bios
+    {FACP.INTEL_OEMID.CALISTGA_TABLEID.GE.GE.*.*.*.6040000.5a.0.0.0.0.8086.2448.0.0.0.00000000.00000800}, \        ; PTLTD
+    {FACP.AOEM_OEMID.AOEM_TABLEID.GE.GE.GE.*.*.3000629.97.3.0.0.0.1002.5a34.0.0.0.00000000.02000000}, \            ; AMI bios that boot configures VGA bridge with motherboard resource
+    {FACP.AOEM_OEMID.AOEM_TABLEID.GE.GE.GE.*.*.1000620.97.2.0.0.0.1002.5a34.0.0.0.00000000.02000000}, \            ; AMI bios that boot configures VGA bridge with motherboard resource
+    {FACP.INTEL_OEMID.ALVISO_TABLEID.GE.GE.*.*.*.6040000.5f.0.0.0.0.8086.2591.0.0.0.00000000.02000000}, \          ; ACER bios that boot configures VGA bridge with motherboard resource
+    {FACP.DELL_OEMID.WS380_TABLEID.GE.GE.GE.*.*.7.61.3.0.0.0.8086.2775.0.0.0.00000000.02000000}, \                 ; Dell bios that boot configures VGA bridge with MCFG range.
+    {FACP.COMPAL_OEMID.HOFFA_TABLEID.GE.GE.*.*.*.6040000.f4240.0.0.0.0.1023.8520.14C0.0010.0.00000010.00000000}, \ ; PTLTD09/15/00
+    {FACP.HP_OEMID.A07_TABLEID.*.*.*.*.*.0.0.0.0.0.0.10DE.005D.0.0.0.00000400.00000000}, \                         ; No D3 on devices beneath nVidia bridge on DL585
+    {FACP.HP_OEMID.A08_TABLEID.*.*.*.*.*.0.0.0.0.0.0.10DE.005D.0.0.0.00000400.00000000}, \                         ; No D3 on devices beneath nVidia bridge on BL685
+    {FACP.HP_OEMID.AWRDACPI_TABLEID.LE.*.*.*.*.42302E31.0.0.0.0.0.1002.5A34.0.0.0.00000000.00400000}, \            ; HP DX 5150 MT with volatile ATI root port SSVIDs
+    {FACP.HP_OEMID.AWRDACPI_TABLEID.LE.*.*.*.*.42302E31.0.0.0.0.0.1002.5A37.0.0.0.00000000.00400000}, \            ; HP DX 5150 MT with volatile ATI root port SSVIDs
+    {FACP.HP_OEMID.AWRDACPI_TABLEID.LE.*.*.*.*.42302E31.0.0.0.0.0.1002.5A3F.0.0.0.00000000.00400000}               ; HP DX 5150 MT with volatile ATI root port SSVIDs
+
+;
+;
+; Hack flag: 00000200.00000000
+;
+; Set a hack flag to enable MSI mapping on memory host controllers.
+;
+
+PCIDeviceHackCpuMatch = \
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.005E.0.0.0.00000200.00000000}, \ ; nForce4 (CK8-04)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.0270.0.0.0.00000200.00000000}, \ ; nForce 410/430 (MCP51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.02F0.0.0.0.00000200.00000000}, \ ; nForce 410/430 (C51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.02F1.0.0.0.00000200.00000000}, \ ; nForce 410/430 (C51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.02F2.0.0.0.00000200.00000000}, \ ; nForce 410/430 (C51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.02F3.0.0.0.00000200.00000000}, \ ; nForce 410/430 (C51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.02F4.0.0.0.00000200.00000000}, \ ; nForce 410/430 (C51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.02F5.0.0.0.00000200.00000000}, \ ; nForce 410/430 (C51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.02F6.0.0.0.00000200.00000000}, \ ; nForce 410/430 (C51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.02F7.0.0.0.00000200.00000000}, \ ; nForce 410/430 (C51)
+    {PROCESSOR_AMD.*.*.*.*.0.0.0.0.10DE.0369.0.0.0.00000200.00000000}    ; nForce 590/570 (MCP 55)
+
+;
+; The Intel Lindenhurst/Tumwater server systems have PCI express root ports
+; and other components with broken ASPM support in the hardware, which causes
+; the system to crash when ASPM is enabled. Therefore when these devices are
+; found, ASPM will be disabled on these systems accordingly.
+;
+; Alternately, disable ASPM if the ASPM_NOT_SUPPORTED boot arch flag is set.
+;
+
+PCIDeviceDisablePciExpressASPM = {*.8086.3595.0.0.0.0}, \ ; Lindenhurst/Tumwater server
+                                 {*.8086.3596.0.0.0.0}, \ ; Lindenhurst/Tumwater server
+                                 {*.8086.3597.0.0.0.0}, \ ; Lindenhurst/Tumwater server
+                                 {*.8086.3598.0.0.0.0}, \ ; Lindenhurst/Tumwater server
+                                 {*.8086.3599.0.0.0.0}, \ ; Lindenhurst/Tumwater server
+                                 {*.8086.359A.0.0.0.0}, \ ; Lindenhurst/Tumwater server
+                                 {*.8086.25E2.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25E3.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25E4.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25E5.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25E6.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25E7.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25F7.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25F8.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25F9.0.0.0.0}, \ ; Blackford
+                                 {*.8086.25FA.0.0.0.0}, \ ; Blackford
+                                 {*.8086.2580.0.0.0.0}, \ ; Grantsdale (915)
+                                 {*.8086.2584.0.0.0.0}, \ ; Alderwood (925)
+                                 {*.8086.2588.0.0.0.0}, \ ; Copper River
+                                 {*.8086.2770.0.0.0.0}, \ ; Lakeport G/P (945)
+                                 {*.8086.2774.0.0.0.0}, \ ; Glenwood (955X)
+                                 {*.8086.2778.0.0.0.0}, \ ; Mukilteo (E7230)
+                                 {*.8086.277C.0.0.0.0}, \ ; Glenwood-DG (975-X)
+                                 {*.0.0.0.0.0.10} ; ASPM_NOT_SUPPORTED boot arch flag.
+
+;
+; DMA remapping hardware that requires alternate root port error handling.
+;
+PciDmaRemappingRequireErrorHandling = {*.8086.3C00.0.0.0}, \ ; Sandybridge - EP DMI
+                                      {*.8086.3C01.0.0.0}, \ ; root port 0
+                                      {*.8086.3C02.0.0.0}, \ ; root port 1a
+                                      {*.8086.3C03.0.0.0}, \ ; root port 1b
+                                      {*.8086.3C04.0.0.0}, \ ; root port 2a
+                                      {*.8086.3C05.0.0.0}, \ ; root port 2b
+                                      {*.8086.3C06.0.0.0}, \ ; root port 2c
+                                      {*.8086.3C07.0.0.0}, \ ; root port 2d
+                                      {*.8086.3C08.0.0.0}, \ ; root port 3a
+                                      {*.8086.3C09.0.0.0}, \ ; root port 3b
+                                      {*.8086.3C0A.0.0.0}, \ ; root port 3c
+                                      {*.8086.3C0B.0.0.0}, \ ; root port 3d
+                                      {*.8086.3400.0.0.0}, \ ; Tylersburg/Boxboro DMI
+                                      {*.8086.3420.0.0.0}, \ ; root port 0
+                                      {*.8086.3408.0.0.0}, \ ; root port 1
+                                      {*.8086.3409.0.0.0}, \ ; root port 2
+                                      {*.8086.340A.0.0.0}, \ ; root port 3
+                                      {*.8086.340B.0.0.0}, \ ; root port 4
+                                      {*.8086.340C.0.0.0}, \ ; root port 5
+                                      {*.8086.340D.0.0.0}, \ ; root port 6
+                                      {*.8086.340E.0.0.0}, \ ; root port 7
+                                      {*.8086.340F.0.0.0}, \ ; root port 8
+                                      {*.8086.3410.0.0.0}, \ ; root port 9
+                                      {*.8086.3411.0.0.0}    ; root port 10
+
+
+;
+; Interrupt remapping hardware that does not remap all interrupts.
+; TODO: update with more info from IHVs
+;
+PciInterruptRemappingNotRemapAllInterrupts = {*.1002.5A23.0.0.0}
+
+;
+; A rule to check PciDmaRemappingRequireErrorHandling and PciInterruptRemappingNotRemapAllInterrupts
+;
+PciQueryRemappingRule = {}
+
+ACPISwallowObjectCRS = {FACP.DELL_OEMID.CPIR_TABLEID.*.*.*.*.0.0.0.0.0.0.5f37424d}   ; The MB7 device on Dell's D05 systems
+
+ACPIDeviceIgnoreStaDisable = {NVRAIDBUS_HID1}, \   ; NVidia RAID controller HID 1
+                             {NVRAIDBUS_HID2}      ; NVidia RAID controller HID 2
+
+;
+; Pci arbiter hacks
+;
+; Sometimes the BIOS does not report the memory it is actually using.
+; around those cases in the PCI arbiters
+;
+PciBrokenMemAtF8 = {FACP.NEC_OEMID.ND036_TABLEID.LE.LE.*.*.1.f4240.0.0.0.0}, \ ;NECLU700R01/15/01
+                   {FACP.SONY_OEMID.K5_TABLEID.GE.GE.*.*.6040000.f4240.0.0.0.0}, \ ;SONYK5
+                   {FACP.COMPAQ_OEMID.BORG_TABLEID.GE.GE.*.*.6040000.f4240.0.0.0.0} \ ;CompaqEVON150
+
+;
+; Match cpu type for AMD processor string
+;
+CpuTypeAmd = {PROCESSOR_AMD.*.*.*.0.0.0.0}
+
+;
+; Match cpu type for Intel processor strings on which to disable DTT
+;
+CpuTypeIntelDttDisable = {PROCESSOR_INTEL.EQ.EQ.*.0.6.1A.0}, \
+                         {PROCESSOR_INTEL.EQ.EQ.*.0.6.1E.0}, \
+                         {PROCESSOR_INTEL.EQ.EQ.*.0.6.25.0}, \
+                         {PROCESSOR_INTEL.EQ.EQ.*.0.6.2C.0}, \
+                         {PROCESSOR_INTEL.EQ.EQ.*.0.6.2E.0}, \
+                         {PROCESSOR_INTEL.EQ.EQ.*.0.6.2F.0}
+
+;
+; ATA identify delay workaround
+;
+; Newer version of our ATA driver removes the delay in sending identify command
+; to improve performance.  This hack is to workaround some platforms that
+; require the delay to discover hot plug devices
+;
+ATAEnableIdentifyDelay = {FACP.IBM_OEMID.TP-1Q_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-1R_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-1U_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-1V_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-1Y_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-70_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-74_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-75_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-76_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.IBM_OEMID.TP-77_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.LENOVO_OEMID.TP-79_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.LENOVO_OEMID.TP-7B_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.LENOVO_OEMID.TP-7C_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.LENOVO_OEMID.TP-7F_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.LENOVO_OEMID.TP-7I_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.LENOVO_OEMID.TP-7J_TABLEID.*.*.*.*.0.0.0.0.0.0}, \
+                         {FACP.HP_OEMID.NC6400_UMA_TABLEID.*.*.*.*.0.0.0.0.0.0},\
+                         {FACP.HP_OEMID.NC6400_DISCRETE_TABLE.*.*.*.*.0.0.0.0.0.0},\
+                         {FACP.TOSHIBA_OEMID.ALL_TABLEID.*.*.*.*.0.0.0.0.0.0},\
+                         {FACP.TOSHIBA_CPL_OEMID.ALL_TABLEID.*.*.*.*.0.0.0.0.0.0},\
+                         {FACP.TOSHIBA_INV_OEMID.ALL_TABLEID.*.*.*.*.0.0.0.0.0.0},\
+                         {FACP.TOSHIBA_QCI_OEMID.ALL_TABLEID.*.*.*.*.0.0.0.0.0.0},\
+                         {FACP.TOSHIBA_ASU_OEMID.ALL_TABLEID.*.*.*.*.0.0.0.0.0.0}
+
+;
+; Ignore the request of eliminating IO Port resources for storage controller
+;
+StorageKeepIoPortRequirement = {FACP.COMPAQ_OEMID.EAGLLAKE_TABLEID.LE.*.LE.*.1.0.1.0.0.0}  ; HP compaq DC7900
+
+;
+; No multiphase resume from hibernate
+;
+; Some versions of ACER and Gateway machines hang on resume from sleep and hibernate
+; as when the crashdump is initialized, it touches the PCI storage controller
+; and when the \_WAK method executes in acpi re-enable, the firmware hangs since
+; it cannot handle the changed device state.
+;
+
+;
+; The ACER2_OEMID and ACRPRDCT_TABLEID correspond to Acer Aspire 5830TG-6402,
+; Gateway NV55C (Gateway is owned by Acer), and Acer Iconia Dual Screen machines.
+; Problem is fixed on BIOS's after June 1, 2012.
+;
+DisableHibernateMultiPhaseResume = {FACP.ACER2_OEMID.ACRPRDCT_TABLEID.*.*.*.LT.0.0.0.06.01.12}
+
+;
+; Forcibly run _REG methods on PCI devices on systems where this rule evaluates to TRUE.
+;
+; Some Macbooks, Macbook Air, and Toshiba systems have BIOS bugs that rely on EC _REG() methods
+; being run even though they have an ECDT.
+;
+AcpiForceRunRegMethodOnPCIDevice = \
+    {FACP.APPLE_OEMID.*.*.*.*.*.0.0.0.0.0.0}, \
+    {FACP.TOSHIBA_ASU_OEMID.TOSASU00_TABLEID.EQ.*.*.*.1.0.0.0.0.0}
+
+;
+; Remove certain pages from memory by including them on the bad page list
+; as they corrupt resume from sleep on certain systems. The last numeric
+; arg is the PFN of the page to remove in hex.
+;
+
+RemoveCorruptS3Pages = \
+    {FACP.SAMSUNG_OEMID.NIKE_TABLEID.*.*.*.*.0.0.0.0.0.0.00010007} ;03/08/2012 has fix
+
+;
+; Rescan the device tree starting at \_SB to detect any devices that did not
+; correctly describe dependencies and whose _STA evaluated to not present
+; because of a missing dependency. This is a best-effort attempt to give
+; these devices an opportunity to start.
+;
+AcpiRescanAfterInitDependenciesSatisfied = \
+    {DSDT.ASUS2_OEMID.NVCARDHUAP30_TABLEID.LE.*.*.*.3.0.0.0.0.0}, \
+    {DSDT.ASUS2_OEMID.INTELSOCCV_TABLEID.LE.*.*.*.17.0.0.0.0.0}, \
+    {DSDT.INTEL_OEMID.INTELSOCCV_TABLEID.LE.*.*.*.17.0.0.0.0.0}, \
+    {DSDT.QUALCOMM_OEMID.MSM8930_TABLEID.LE.*.*.*.3.0.0.0.0.0}
+
+;
+; Force legacy (Windows 8) debouncing behavior on Clovertrail based systems
+; to workaround issues in other Windows drivers that were exposed due to change in
+; behavior with enhanced (Blue) debouncing model.
+;
+GpioForceLegacyDebouncingModel = \
+    {PROCESSOR_INTEL.EQ.EQ.*.0.6.35.0}
+
+;
+; Starting with Windows releases *after* Blue, ACPI will not put surprise-removed devices into D3Cold 
+; automatically. Some known scenarios (viz. WiFi reset/recovery) rely on the device cycling through 
+; D3Cold on surprise-removal. This hack allows surprise-removed devices to be put into D3Cold (if
+; supported by the stack).
+;
+; Format: (NumericArgs.StringArgs)
+; Numerics Args: ([BusQueryHardwareIDs = 1] OR [BusQueryCompatibleIDs = 2])
+; String Args: (Hardware ID) or (Compatible ID string) // depending on the numeric arg
+;
+; Note ACPIDeviceIdMultiString rule check has a limit of MULTI_STRING_MATCH_MAX_INPUT_STRINGS (16) number 
+; of input strings. 
+;
+ACPIDeviceEnableD3ColdOnSurpriseRemoval = \
+    {MARVELL_SD_WIFI_HID1.1}, \ ; SD-enumerated Marvell WiFi controller HID1
+    {MARVELL_SD_WIFI_HID2.1} \ ; SD-enumerated Marvell WiFi controller HID2
+
+;
+; Controls whether ACPIDeviceEnableD3ColdOnSurpriseRemoval rule will be evaluated or not on a given 
+; platform. Currently ACPIDeviceEnableD3ColdOnSurpriseRemoval rule only needs to be evaluated on Surface 
+; platforms which contain the Marvell WiFi controller which depends on device going through D3Cold as 
+; part of surprise-removal.
+;
+AcpiPlatformCheckEnableD3ColdOnSurpriseRemoval = \
+    {DSDT.SURFACE_OEMID.NVCARDHUAP30_TABLEID.GE.*.*.*.3.0.0.0.0.0}, \
+    {DSDT.SURFACE_OEMID.NVCOMOT114_TABLEID.GE.*.*.*.3.0.0.0.0.0}, \
+    {DSDT.SURFACE_PRO3_OEMID.SURFACE_PRO3_TABLEID.GE.*.*.*.3.0.0.0.0.0}
+
+;
+; This errata allows PLDR to continue even if query remove fails because of open handles.
+;
+; Format: (NumericArgs.StringArgs)
+; Numerics Args: ([BusQueryHardwareIDs = 1] OR [BusQueryCompatibleIDs = 2])
+; String Args: (Hardware ID) or (Compatible ID string) // depending on the numeric arg
+;
+; Note ACPIDeviceIdMultiString rule check has a limit of MULTI_STRING_MATCH_MAX_INPUT_STRINGS (16) number 
+; of input strings. 
+;
+ACPIDeviceIgnoreOpenHandlesOnDeviceReset = \
+    {QCOM8909_HID1.1}, \ ; RIVA Sub system enumerated WIFI device
+    {QCOM8909_HID2.1}, \ ; RIVA Sub system enumerated BT device
+    {QCOM8909_HID3.1} \ ; RIVA Sub system enumerated FM device
+    
+;
+; Controls whether ACPIDeviceIgnoreOpenHandlesOnDeviceReset rule will be evaluated or not on a given 
+; platform. Currently ACPIDeviceIgnoreOpenHandlesOnDeviceReset rule only needs to be evaluated on QCOMM
+; 8909 platform.
+;
+AcpiPlatformCheckIgnoreOpenHandlesOnDeviceReset = \
+    {DSDT.QUALCOMM_OEMID.MSM8909_TABLEID.GE.*.*.*.3.*.*.*.*.*}
+
+;
+; Some platforms shipped with mandatory platform state dependencies for devices
+; that did not exist. On these systems, ignore all device dependencies on missing
+; devices.
+;
+IgnoreMissingPepDependencies = \
+    {DSDT.ASUS2_OEMID.NOTEBOOK_TABLEID.LE.*.*.*.3.0.0.0.0.0}, \
+    {DSDT.LENOVO_OEMID.CB-01_TABLEID.LE.*.*.*.1.0.0.0.0.0}
+
+;
+; Some platforms shipped with insufficient platform state depedencies. On such 
+; systems for a matching device, add a constraint against the device. This is 
+; specific to the inbox Intel PEP. Only one constraint can be specified per
+; platform.
+;
+IntelPepAddDeviceConstraint = \
+    {DSDT.SURFACE_PRO3_OEMID.SURFACE_PRO3_TABLEID.GE.*.*.*.SURFACE_PRO3_WIFI.3.0.0.0.0.0.0.3}
+
+;===============================================================
+;================= Declare the Rules ===========================
+;===============================================================
+;                   Rule Name=argument type list
+;
+;where argument type list is defined as:
+; <Number of String argumentsGT>, <Number of Numeric Arguments>,
+; <1st Entry Type Name>, <2nd Entry Type Name>...
+;================================================================
+
+[RuleDef]
+
+;***********************
+;**** Helper Rules *****
+;***********************
+
+BasicMachineID = 11, 6
+
+;**********************
+;**** TargetRules *****
+;**********************
+
+;
+;String Args: (AcpiTableId, OemId,AcpiTableId, OemTableId)
+;
+
+ACPISLPWorkAround = 4, 0
+
+;
+;String Args: (AcpiTableId, OemId)
+;
+
+PcmciaIrqRoutingSettings1 = 2, 0
+
+;
+;String Args: (AcpiTableId, OemId, OemTableId,
+;              OemRevisionOp, CreatorRevisionOp, AcpiRevisionOp, DateOp)
+;Numerics Args: (OemRev, CreatorRev, AcpiRev, Month, Day, Year)
+;
+
+ACPIDisableS1 = 7, 6
+ACPIDisableS2 = 7, 6
+ACPIDisableS3 = 7, 6
+ACPIIgnoreQWordLength = 7, 6
+PcmciaAttributeWindowUnlimited = 7, 6
+DisablePStates = 7, 6
+DisableTStates = 7, 6
+DisablePcc = 7, 6
+DisableAcpi1CStateC2 = 7, 6
+IgnorePciRootBusNumberRange = 7, 6
+IgnoreOverlappingPciRootBusNumberRanges = 7, 6
+IgnoreCBMemLimits = 7, 6
+DisablePciExpressASPM = 7, 6
+IgnorePciSegments = 7, 6
+AvoidAssertOnBadIdDataForHostBridge = 7, 6
+DellNationalPC87364WorkAround = 7, 6
+USBDisableSelectiveSuspend = 7, 6
+AcpiIrqDistributionStackUp = 7, 6
+AcpiIrqDistributionSpreadOut = 7, 6
+AcpiIrqRoutingStackOnIRQ9 = 7, 6
+AcpiIrqRoutingStackOnIRQ10 = 7, 6
+AcpiIrqRoutingStackOnIRQ11 = 7, 6
+IgnoreIsaVgaBitConflict = 7, 6
+PciBrokenMemAtF8 = 7, 6
+ATAEnableIdentifyDelay = 7, 6
+StorageKeepIoPortRequirement = 7, 6
+DisableHibernateMultiPhaseResume = 7, 6
+AcpiForceRunRegMethodOnPCIDevice = 7, 6
+AcpiRescanAfterInitDependenciesSatisfied = 7, 6
+AcpiPlatformCheckEnableD3ColdOnSurpriseRemoval = 7, 6
+AcpiPlatformCheckIgnoreOpenHandlesOnDeviceReset = 7, 6
+IgnoreMissingPepDependencies = 7, 6
+
+;
+; ACPI AMLI-specific rules
+;
+
+AMLIReturn_REV1 = 7, 6
+AMLIReturn_REV3 = 7, 6
+AMLIIgnorePackageLengthCheck = 7, 6
+AMLIAllowInvalidReclaimMemoryMapOnLoad = 7, 6
+AMLIUseNamespaceOverride = 7, 6
+
+;
+; String Args: (CPUManufacturer, Op, Op, Op)
+; Numeric Args: (Namespace object, NOP, Family, Model, Stepping)
+; EntryType Args: ACPINameSpaceObject
+;
+AMLIAllowInvalidReclaimMemoryMapOnEval = 4,5, ACPINameSpaceObject
+
+;
+; No arguments
+;
+
+DisableFastS4 = 0, 0
+
+;
+; String Args: None.
+; Numereric Args: FADT boot architecture flag.
+;
+
+DisableMSI = 0,1
+
+;
+; String Args: (PciRevisionOp)
+; Numerics Args: (VendorId, DeviceId, SubVenId, SubSysId, RevisionId,
+;                 Hackflags0, Hackflags1)
+; EntryType Args: PCIDevice
+;
+PCIDeviceHack = 1, 7, PCIDevice
+
+;
+; String Args: (PciRevisionOp)
+; Numerics Args: (VendorId, DeviceId, SubVenId, SubSysId, RevisionId, Delay)
+; EntryType Args: PCIDevice
+;
+PCIDeviceD0Delay = 1, 6, PCIDevice
+
+;
+; String Args: (PciRevisionOp)
+; Numerics Args: (VendorId, DeviceId, SubVenId, SubSysId, RevisionId, MpsSize)
+; EntryType Args: PCIDevice
+;
+PCIDeviceMpsSize = 1, 6, PCIDevice
+
+;
+; String Args: (AcpiTableId, OemId, OemTableId,
+;               OemRevisionOp, CreatorRevisionOp, AcpiRevisionOp, DateOp,
+;               PciRevisionOp)
+; Numerics Args: (OemRev, CreatorRev, AcpiRev, Month, Day, Year,
+;                 VendorId+DeviceId, SubsystemId, RevisionId,
+;                 Hackflags0, Hackflags1)
+; EntryType Args: PCIDevice
+;
+PCIDeviceHackBiosMatch = 8, 13, PCIDevice
+
+;
+; String Args: (CPUManufacturer, CPUFamilyOp, CPUModelOp, CPUSteppingOp,
+;               PciRevisionOp)
+; Numeric Args: (NOP, CPUFamily, CPUModel, CPUStepping,
+;                VendorId, DeviceId, SubVenId, SubSysId, RevisionId,
+;                Hackflags0, Hackflags1)
+; EntryType Args: PCIDevice
+;
+PCIDeviceHackCpuMatch = 5, 11, PCIDevice
+
+;
+; String Args: (PciRevisionOp)
+; Numeric Args: (VendorId, DeviceId, SubVenId, SubSysId, RevisionId)
+;               (ACPI Boot Arch Flags)
+; EntryType Args: PCIDevice
+;
+PCIDeviceDisablePciExpressASPM = 1, 6, PCIDevice
+
+;
+; String Args: (PciRevisionOp)
+; Numeric Args: (VendorId, DeviceId, SubVenId, SubSysId, RevisionId)
+; EntryType Args: PCIDevice
+;
+PciDmaRemappingRequireErrorHandling = 1, 5, PCIDevice
+
+;
+; String Args: (PciRevisionOp)
+; Numeric Args: (VendorId, DeviceId, SubVenId, SubSysId, RevisionId)
+; EntryType Args: PCIDevice
+;
+PciInterruptRemappingNotRemapAllInterrupts = 1, 5, PCIDevice
+
+;
+; String Args: ()
+; Numeric Args: ()
+; EntryType Args: PCIDevice
+;
+PciQueryRemappingRule = 0, 0, PCIDevice
+
+;
+; String Args: (AcpiTableId, OemId, OemTableId,
+;               OemRevisionOp, CreatorRevisionOp, AcpiRevisionOp, DateOp)
+; Numerics Args: (OemRev, CreatorRev, AcpiRev, Month, Day, Year,
+;                 ACPIObjNameSeg)
+; EntryType Args: ACPINameSpaceObject
+;
+
+ACPISwallowObjectCRS = 7, 7, ACPINameSpaceObject
+
+;
+; String Args: (ACPIHardwareId)
+; EntryType Args: ACPIDevice
+;
+
+ACPIDeviceIgnoreStaDisable = 1, 0, ACPIDevice
+
+;
+; String Args: (CPUManufacturer, Op, Op, Op)
+; Numeric Args: (NOP, Family, Model, Stepping)
+;
+
+CpuTypeAmd = 4, 4
+CpuTypeIntelDttDisable = 4, 4
+GpioForceLegacyDebouncingModel = 4, 4
+AcpiDisableD3ColdOnSurpriseRemoval = 4, 4
+
+;
+;String Args: (AcpiTableId, OemId, OemTableId,
+;              OemRevisionOp, CreatorRevisionOp, AcpiRevisionOp, DateOp)
+;Numerics Args: (OemRev, CreatorRev, AcpiRev, Month, Day, Year, BadPFN)
+;
+
+RemoveCorruptS3Pages = 7, 7
+
+;
+; String Args: (ACPIHardwareId)
+; Numerics Args: ([BusQueryHardwareIDs = 1] OR [BusQueryCompatibleIDs = 2])
+; EntryType Args: (Hardware or compatible ID string)
+; 
+
+ACPIDeviceEnableD3ColdOnSurpriseRemoval = 1, 1, ACPIDeviceIdMultiString
+
+;
+; String Args: (ACPIHardwareId)
+; Numerics Args: ([BusQueryHardwareIDs = 1] OR [BusQueryCompatibleIDs = 2])
+; EntryType Args: (Hardware or compatible ID string)
+; 
+
+ACPIDeviceIgnoreOpenHandlesOnDeviceReset = 1, 1, ACPIDeviceIdMultiString
+
+;
+; String Args: (AcpiTableId, OemId, OemTableId,
+;               OemRevisionOp, CreatorRevisionOp, AcpiRevisionOp, DateOp,
+;               DeviceUniqueID)
+; Numerics Args: (OemRev, CreatorRev, AcpiRev, Month, Day, Year, FState, DState)
+;
+
+IntelPepAddDeviceConstraint = 8, 8
+
+;==================================================================
+;================== Define the rule implementation ================
+;==================================================================
+;
+;N.B. The rules are specified in the postfix notation for a binary
+;     expression tree representing the rule.
+;     Logical operators AND(&) and OR(|) are supported
+;     The Callback names are preceded with a '?"
+;     The Rule names are preceded with a "%"
+;     The String Argument Type names are preceded with a "$"
+;     All Parameters for any rule or callback instances are specified
+;     with a number indicating the order in the [CallBackDef] or [RuleDef]
+;===================================================================
+
+[Rule]
+BasicMachineID = ?AcpiOemId(0.1)()(),?AcpiOemTableId(2.3)()(),&,  \
+                 ?AcpiOemRevision(4.5)(0)(),?AcpiCreatorRevision(6.7)(1)(),&,   \
+                 &,  \
+                 ?AcpiRevision(8.9)(2)(),?BiosDate(10)(3.4.5)(),&,   \
+                 &
+
+ACPISLPWorkAround = ?AcpiOemId(0.1)()(),?AcpiOemTableId(2.3)()(),&
+
+ACPIDisableS1 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+ACPIDisableS2 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+ACPIDisableS3 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+ACPIIgnoreQWordLength = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+PcmciaAttributeWindowUnlimited = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+PcmciaIrqRoutingSettings1 = ?AcpiOemId(0.1)()()
+DisablePStates = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+DisableTStates = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+DisablePcc = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+DisableAcpi1CStateC2 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+IgnorePciRootBusNumberRange = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+IgnoreOverlappingPciRootBusNumberRanges = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+IgnoreCBMemLimits = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+DisablePciExpressASPM = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+IgnorePciSegments = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AvoidAssertOnBadIdDataForHostBridge = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+DellNationalPC87364WorkAround = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+USBDisableSelectiveSuspend = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AcpiIrqDistributionStackUp = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AcpiIrqDistributionSpreadOut = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AcpiIrqRoutingStackOnIRQ9 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AcpiIrqRoutingStackOnIRQ10 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AcpiIrqRoutingStackOnIRQ11 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+IgnoreIsaVgaBitConflict = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+IgnoreMissingPepDependencies = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; ACPI AMLI-specific rules
+;
+
+AMLIReturn_REV1 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AMLIReturn_REV3 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AMLIIgnorePackageLengthCheck = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AMLIAllowInvalidReclaimMemoryMapOnLoad = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AMLIUseNamespaceOverride = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+AMLIAllowInvalidReclaimMemoryMapOnEval = \
+    ?AcpiObjectName()(0)(0),?CpuType(0.1.2.3)(1.2.3.4),&
+
+DisableFastS4 = \
+    ?GraphicsDisableFastS4()()()
+
+ACPISwallowObjectCRS = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)(), \
+                       ?ACPIObjectName()(6)(0),&
+
+ACPIDeviceIgnoreStaDisable = ?ACPIDeviceMatch(0)()(0)
+
+ACPIDeviceEnableD3ColdOnSurpriseRemoval = ?ACPIDeviceIdMultiStringMatch(0)(0)(0)
+
+ACPIDeviceIgnoreOpenHandlesOnDeviceReset = ?ACPIDeviceIdMultiStringMatch(0)(0)(0)
+
+;
+; PCI device hack flags rule
+;
+PCIDeviceHack = ?PCIDeviceMatch(0)(0.1.2.3.4)(0),?PCIDeviceSetHackflags()(5.6)(0),&
+
+;
+; PCI device hack flags rule
+;
+PCIDeviceD0Delay = ?PCIDeviceMatch(0)(0.1.2.3.4)(0),?PCIDeviceSetD0Delay()(5)(0),&
+
+;
+; PCI device hack flags rule
+;
+PCIDeviceMpsSize = ?PCIDeviceMatch(0)(0.1.2.3.4)(0),?PCIDeviceSetMpsSize()(5)(0),&
+
+;
+; PCI device hack flags based on bios matching rule
+;
+PCIDeviceHackBiosMatch = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)(), \
+                         %PCIDeviceHack(7)(6.7.8.9.10.11.12)(0),&
+
+;
+; PCI device hack flags based on CPU matching rule
+;
+PCIDeviceHackCpuMatch = ?CpuType(0.1.2.3)(0.1.2.3), \
+                        %PCIDeviceHack(4)(4.5.6.7.8.9.10)(0),&
+
+;
+; Disable ASPM on systems with specific unsupported PCI express hubs
+;
+PCIDeviceDisablePciExpressASPM = ?PCIDeviceMatch(0)(0.1.2.3.4)(0), \
+                                 ?AcpiFADTBootArch()(5),|
+
+;
+; The rule for DMA remapping devices that require root port alternate error handling
+;
+PciDmaRemappingRequireErrorHandling = ?PCIDeviceMatch(0)(0.1.2.3.4)(0)
+
+;
+; The rule for interrupt remapping devices that do not remap all interrupts
+;
+PciInterruptRemappingNotRemapAllInterrupts = ?PCIDeviceMatch(0)(0.1.2.3.4)(0)
+
+;
+; The rule to query PciDmaRemappingRequireErrorHandling and PciInterruptRemappingNotRemapAllInterrupts
+;
+PciQueryRemappingRule = ?PCIDeviceQueryRule()()(0)
+
+;
+; Disable MSI on a system where FADT Boot Arch flags are set
+;
+DisableMSI = ?AcpiFADTBootArch()(0)
+
+;
+; Work around unreported memory at F8 for PCI arbiters
+;
+PciBrokenMemAtF8 = \
+    %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; Match cpu type for AMD
+;
+CpuTypeAmd = \
+    ?CpuType(0.1.2.3)(0.1.2.3)
+
+;
+; Match cpu type for Intel processor strings on which to disable DTT
+;
+CpuTypeIntelDttDisable = \
+    ?CpuType(0.1.2.3)(0.1.2.3)
+
+;
+; Work around DVD/CD hot plug issue for IBM laptops
+;
+ATAEnableIdentifyDelay = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; Ignore the request of eliminating IO Port resources for storage controller
+;
+StorageKeepIoPortRequirement = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; Work around some Acer BIOS not handling touching the storage controller before ACPI Re-enable
+; on wake from hibernate
+;
+DisableHibernateMultiPhaseResume = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; Workaround Macbook Air systems that depend on _REG method being run even when
+; they are not supposed to.
+;
+AcpiForceRunRegMethodOnPCIDevice = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; Rescan the device tree starting at \_SB to detect any devices that did not
+; correctly describe dependencies and whose _STA evaluated to not present
+; because of a missing dependency. This is a best-effort attempt to give
+; these devices an opportunity to start.
+;
+AcpiRescanAfterInitDependenciesSatisfied = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; Remove pages that get corrupted over S3 transitions on Samsung BUILD slates and certain
+; Dell and Alienware machines by adding them to the BCD bad page list.
+;
+
+RemoveCorruptS3Pages = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)(), \
+                       ?RemoveBadS3Pages()(6)(),&
+
+;
+; Force legacy (Windows 8) debouncing behavior on Clovertrail based systems
+; to workaround issues in other Windows drivers that were exposed due to change in
+; behavior with enhanced (Blue) debouncing model.
+;
+GpioForceLegacyDebouncingModel = ?CpuType(0.1.2.3)(0.1.2.3)
+
+;
+; Controls whether ACPIDeviceEnableD3ColdOnSurpriseRemoval rule will be evaluated or not on a given 
+; platform. Currently ACPIDeviceEnableD3ColdOnSurpriseRemoval rule only needs to be evaluated on Surface 
+; platforms which contain the Marvell WiFi controller which depends on device going through D3Cold as 
+; part of surprise-removal.
+;
+AcpiPlatformCheckEnableD3ColdOnSurpriseRemoval = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; Controls whether ACPIDeviceIgnoreOpenHandlesOnDeviceReset rule will be evaluated or not on a given 
+; platform. Currently ACPIDeviceIgnoreOpenHandlesOnDeviceReset rule only needs to be evaluated on QCOMM
+; 8909 platform. 
+;
+AcpiPlatformCheckIgnoreOpenHandlesOnDeviceReset = %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)()
+
+;
+; Some platforms shipped with insufficient platform state depedencies. On such 
+; systems for a matching device, add a constraint against the device. This is 
+; specific to the inbox Intel PEP. Only one constraint can be specified per
+; platform.
+;
+IntelPepAddDeviceConstraint = \
+   %BasicMachineID(0.1.0.2.3.0.4.0.5.0.6)(0.1.2.3.4.5)(), \
+   ?IntelPepCaptureDeviceConstraint(7)(6.7)(),&
+
+;===========================================================
+;========= Declare the Provider Callbacks ==================
+;          Callback Name=argument type list
+;
+;where argument type list is defined as:
+; <Number of String argumentsGT>, <Number of Numeric Arguments>,
+; <1st Entry Type Name>, <2nd Entry Type Name>...
+;===========================================================
+[CallbackDef]
+AcpiOemId = 2, 0                ; (AcpiTableId, OemId)
+AcpiOemTableId = 2, 0           ; (AcpiTableId, OemTableId)
+AcpiOemRevision = 2, 1          ; (Op, AcpiTableId)(Revision)
+AcpiCreatorRevision = 2, 1      ; (Op, AcpiTableId)(Revision)
+AcpiRevision = 2, 1             ; (Op, AcpiTableId)(Revision)
+AcpiFADTBootArch = 0, 1         ; (FADT Boot Arch mask)
+MemoryRangeSearch = 1, 4        ;
+MemoryMatch = 1, 3              ;
+BiosDate = 1, 3                 ; (Op)(Month, Day, year)
+GraphicsDisableFastS4 = 0, 0    ;
+AlwaysTrue = 0,0                ;
+AlwaysFalse = 0, 0              ;
+SystemArchitecture = 0, 1       ; PROCESSOR_ARCHITECTURE_XXXX
+RemoveBadS3Pages = 0, 1         ;
+
+;
+; String0 = CPUManufacturer ,  Numeric0 = Unused.
+; String1 = Op, Numeric1 = CPU Family
+; String2 = Op, Numeric2 = CPU Model
+; String3 = Op, Numeric3 = Cpu Stepping
+;
+CpuType = 4, 4
+
+; PCI device matching callback
+PCIDeviceMatch = 1, 5, PCIDevice         ; (PciRevisionOp)(VenID, DevID, SubVenID, SubID, RevID)
+PCIDeviceSetHackflags = 0, 2, PCIDevice  ; ()(hackflags0, hackflags1)
+PCIDeviceSetD0Delay = 0, 1, PCIDevice    ; ()(delay)
+PCIDeviceSetMpsSize = 0, 1, PCIDevice    ; ()(MpsSizeSupported)
+PCIDeviceQueryRule = 0, 0, PCIDevice     ; ()()
+
+
+; ACPI object matching callback
+AcpiObjectName = 0, 1, ACPINameSpaceObject ; ()(NameSeg)
+
+; ACPI device matching callback
+ACPIDeviceMatch = 1, 0, ACPIDevice ; (HardwareID)()
+
+; ACPI device Id multi-string matching callback
+;
+; Note ACPIDeviceIdMultiString rule check has a limit of MULTI_STRING_MATCH_MAX_INPUT_STRINGS (16)  
+; number of input strings. 
+;
+ACPIDeviceIdMultiStringMatch = 1, 1, ACPIDeviceIdMultiString ; (HardwareID)(ID string type)
+
+; Intel PEP constraint capture callback
+IntelPepCaptureDeviceConstraint = 1, 2 ; (Device Id) (F state, D state)
+
+;==========================================================
+;============ Entry Readable Name to Guid Mapping =========
+;==========================================================
+
+[EntryTypeGuidDef]
+
+; A PCI device.
+PCIDevice = {8213EB69-7FCA-432f-AC8C-1E5C59B1772E}
+
+; An ACPI namespace object.
+ACPINameSpaceObject = {9ad56063-6b5d-4378-92a6-b4a8ca5b2616}
+
+; An ACPI device.
+ACPIDevice = {EB1A2D2A-DF53-42d9-A5AA-7B25D0B5712B}
+
+; An ACPI device hardware or compatible ID string.
+ACPIDeviceIdMultiString = {B564CB1C-E06A-430F-804F-C1AEE8DB4BD1}
+
+;==========================================================
+;============ Rule Readable Name to Guid Mapping ==========
+;==========================================================
+
+[RuleNameGuidDef]
+BasicMachineID = {669D0E2E-D602-4f6c-A848-CD78CAEDCE50}
+
+;
+; BiosInfo
+;
+
+ACPISLPWorkAround = {DC6A4DC4-ADCA-4d9b-A02B-4B515F742D0C}
+ACPIDisableS1 = {FF69173C-2834-4e0c-B76B-D6E8D4D08976}
+ACPIDisableS2 = {4AA37704-2809-4574-B73C-6CB649822C5C}
+ACPIDisableS3 = {D55820C4-D4A9-44d1-AD2E-8BBCEF3664A8}
+ACPIIgnoreQWordLength = {287DE373-C168-4415-B6CD-B8704C95BFEB}
+PcmciaAttributeWindowUnlimited = {C20234DA-02BC-4842-A0C6-2E5EC35DD95E}
+PcmciaIrqRoutingSettings1 = {7C23B04E-5842-4c76-BE7E-A34609440DF6}
+DisablePStates = {B43AAB04-C1F0-4b12-BE09-187F9F962CA3}
+DisableTStates = {C1D6D87B-765A-41ce-8895-0718C545FAC0}
+DisablePcc = {0DF3EF3B-2BFC-4b2e-84A7-07ABF2DE3BD1}
+DisableAcpi1CStateC2 = {ec4960f1-6b48-4ece-a747-db48384bb146}
+IgnorePciRootBusNumberRange = {F4E014A2-815B-4be8-9665-40FFF9CDFD5A}
+IgnoreOverlappingPciRootBusNumberRanges = {CE69EE33-0145-439d-A738-73AD320A1253}
+IgnoreCBMemLimits = {50B15253-7D7D-4348-9432-35A7E2485111}
+DisablePciExpressASPM = {4DFBAE6B-D3E3-4fdc-804A-6F3E8A0F9F2C}
+IgnorePciSegments = {A6D6FB66-5E6B-4042-9B2A-3A931BBAD09D}
+AvoidAssertOnBadIdDataForHostBridge = {4E23CD72-B4DB-4f17-A90E-BE0B97558383}
+DellNationalPC87364WorkAround = {A0F837AB-9994-44f3-AE11-877004C26FB2}
+USBDisableSelectiveSuspend = {919AFAE0-A787-4f49-8274-9F738CE8610E}
+AcpiIrqDistributionStackUp = {F9C05347-E9C2-44c8-9036-A56F03B864BF}
+AcpiIrqDistributionSpreadOut = {17D45795-962F-42e4-83C1-94C56280C8B3}
+AcpiIrqRoutingStackOnIRQ9 = {E69C3342-3297-40ec-8849-2977980FE886}
+AcpiIrqRoutingStackOnIRQ10 = {99E16F7C-6E4E-4ebe-A8A8-74CA13774FAF}
+AcpiIrqRoutingStackOnIRQ11 = {B6FDEE3C-D27A-46b6-9A70-78A1314357DA}
+IgnoreIsaVgaBitConflict = {6A77BB4C-5772-41AC-803B-C12A61553976}
+IgnoreMissingPepDependencies = {D6F0CEA0-43EE-456d-9BA4-012DC7378359}
+
+;
+; Forcibly run _REG method on PCI devices on system's where the rule evaluates TRUE.
+;
+AcpiForceRunRegMethodOnPCIDevice = {0b95ee68-3937-429d-bdf5-a0752d366d4d}
+
+;
+; ACPI AMLI-specific rules
+;
+
+AMLIReturn_REV1 = {2A331496-B384-40cf-BB33-4307641D00A6}
+AMLIReturn_REV3 = {7E46DB74-3590-4e97-8113-5D866DDA23C7}
+AMLIIgnorePackageLengthCheck = {18FEB373-B259-432f-BCF5-3AB0296F8FC9}
+AMLIAllowInvalidReclaimMemoryMapOnLoad = {1098C26E-851A-48f8-8CDE-954C17BCB184}
+AMLIAllowInvalidReclaimMemoryMapOnEval = {14fa4a80-6397-4a1f-b0ae-2b211ac898e4}
+AMLIUseNamespaceOverride = {fb1b8e3c-df94-4722-ad5e-9e655c33b984}
+
+;
+; FastS4
+;
+
+DisableFastS4 = {E0574D1D-B89D-461c-A5C5-A0998B7C70C2}
+
+;
+; PCI device errata rules
+;
+
+; PCI device hack flags rule
+PCIDeviceHack = {11BC7F8A-A266-4829-BD0C-442EE5B18653}
+
+PCIDeviceD0Delay = {4817D19B-EB55-4A72-9A70-28871205F2AF}
+
+PCIDeviceMpsSize = {FCD363D0-4488-499C-9AED-2D67318F1976}
+
+; PCI device hack flags based on bios matching rule
+PCIDeviceHackBiosMatch = {3AE39896-3D96-4568-A806-B6500FABAC4F}
+
+; PCI device hack flags based on CPU matching rule
+PCIDeviceHackCpuMatch = {FB80FFBA-98E8-4e03-8774-A929320F2F17}
+
+; Disable ASPM on systems with specific unsupported PCI express hubs
+PCIDeviceDisablePciExpressASPM = {6A7D7F12-A114-4d0d-92CA-55A6E925C85D}
+
+; DMA remapping devices that require root port alternate error handling
+PciDmaRemappingRequireErrorHandling = {6780B3EB-0AC1-4E64-8C05-D8E28429A8B3}
+
+; Interrupt remapping devices that do not remap all interrupts
+PciInterruptRemappingNotRemapAllInterrupts = {B08C8DBB-5AA0-46D3-8A2E-8765FD4738F0}
+
+; The rule to query PciDmaRemappingRequireErrorHandling and PciInterruptRemappingNotRemapAllInterrupts
+PciQueryRemappingRule = {81CC912A-DE26-4B5B-A944-E8BFFA3A0F9E}
+
+; Disable MSI on a system
+DisableMSI = {CBC747F0-F1D8-4C8A-AAA7-0CAE4F4AE246}
+
+; Unreported memory at F8
+PciBrokenMemAtF8 = {8F8FFD54-B39C-4b51-96F8-F4B3EC773737}
+
+; Match Cpu type for AMD
+CpuTypeAmd = {9E6DF23B-88B4-4f6a-A802-253325CA8FD5}
+
+;
+; Match cpu type for Intel processor strings on which to disable DTT
+;
+CpuTypeIntelDttDisable = {3C5EF282-42E7-441D-AEBD-B7342F15212E}
+
+; Swallows the CRS object on some Dell systems
+ACPISwallowObjectCRS = {862CE9AC-7BB8-4bc6-A46C-C4ADA0B41F95}
+
+; Ignore the disable bit for a specific ACPI device
+ACPIDeviceIgnoreStaDisable = {BFFF4BF6-92AE-4c80-9D54-F9D209924899}
+
+; Enable ATA driver to delay identify command on hot plug
+ATAEnableIdentifyDelay = {7AC72FB5-BB2A-4f93-ABDD-07659A531F1D}
+
+; Ignore the request of eliminating IO Port resources for storage controller
+StorageKeepIoPortRequirement = {FE35B171-82D7-48FB-9678-CD1E948ABCF7}
+
+;
+; Disable multi-phase resume on a system
+;
+DisableHibernateMultiPhaseResume = {C89EC9D3-83DB-42f0-8d0d-98cc4bf110af}
+
+;
+; Remove pages that get corrupted over S3 transitions.
+;
+RemoveCorruptS3Pages = {089D9D0D-3811-48EC-8f72-d39f27f3e89a}
+
+;
+; Rescan the device tree starting at \_SB to detect any devices that did not
+; correctly describe dependencies and whose _STA evaluated to not present
+; because of a missing dependency. This is a best-effort attempt to give
+; these devices an opportunity to start.
+;
+AcpiRescanAfterInitDependenciesSatisfied = {59A4630F-8F16-410F-A7AD-543B29BC72BA}
+
+;
+; Starting with Windows releases *after* Blue, ACPI will not put surprise-removed devices into D3Cold 
+; automatically. Some known scenarios (viz. WiFi reset/recovery) rely on the device cycling through 
+; D3Cold on surprise-removal. This hack allows surprise-removed devices to be put into D3Cold (if
+; supported by the stack).
+;
+ACPIDeviceEnableD3ColdOnSurpriseRemoval = {2FBC3B66-A7AA-4B26-8B00-2734907189EB}
+
+;
+; Controls whether ACPIDeviceEnableD3ColdOnSurpriseRemoval rule will be evaluated or not on a given 
+; platform. Currently ACPIDeviceEnableD3ColdOnSurpriseRemoval rule only needs to be evaluated on Surface 
+; platforms which contain the Marvell WiFi controller which depends on device going through D3Cold as 
+; part of surprise-removal.
+;
+AcpiPlatformCheckEnableD3ColdOnSurpriseRemoval = {14B9611E-EBAE-4D74-9231-43A8EFC37CDA}
+
+;
+; Starting with Windows 10 ACPI and PnP support PLDR for device reset and recovery. PLDR requires devices
+; to be query removed before ACPI runs the _RST method. QCOMM 8909 platform has trouble completing
+; PLDR for WLAN device becasue Blue tooth device fails the query remove and results in failure of PLDR.
+; This results in bad experience for the user because the hung hardware couldn't reset itself and recover.
+; This errata allows the devices defined in the errata to continue with PLDR even if there are exisiting open handles.
+;
+ACPIDeviceIgnoreOpenHandlesOnDeviceReset = {B54222CD-5B61-49E6-B8FC-2CFD06260F4F}
+
+;
+; Controls whether ACPIDeviceIgnoreOpenHandlesOnDeviceReset rule will be evaluated or not on a given 
+; platform. Currently ACPIDeviceIgnoreOpenHandlesOnDeviceReset rule only needs to be evaluated on QCOMM
+; 8909 platform. 
+;
+AcpiPlatformCheckIgnoreOpenHandlesOnDeviceReset = {BE2DD198-7FD6-4FDF-8B5A-61778CED9C35}
+
+;
+; Force legacy (Windows 8) debouncing behavior on Clovertrail based systems
+; to workaround issues in other Windows drivers that were exposed due to change in
+; behavior with enhanced (Blue) debouncing model.
+;
+GpioForceLegacyDebouncingModel = {C9457C7C-AED9-4CEE-B13E-22D0F3495B1C}
+
+;
+; Some platforms shipped with insufficient platform state depedencies. On such 
+; systems for a matching device, add a constraint against the device. This is 
+; specific to the inbox Intel PEP. Only one constraint can be specified per
+; platform. 
+;
+IntelPepAddDeviceConstraint = {eba7c247-b47c-4e4b-925b-f0c2cddaa0ac}
+
+;===========================================================
+;=========== Callback Readable Name to Guid Mapping ========
+;===========================================================
+
+[CallbackGuidDef]
+AcpiOemId = {2960716F-B0D8-41c9-9BB4-EE8BA248F86E}
+AcpiOemTableId = {E0E45284-F266-4048-9A5E-7D4007C9C5AB}
+AcpiOemRevision = {7E8FAE0F-7591-4eb6-9554-1D0699873111}
+AcpiCreatorRevision = {BEAE4D5F-2203-4856-94BB-C772A2C7624A}
+AcpiRevision = {BF51DEF4-AC9C-44f3-ADE7-26DD13E756D3}
+AcpiFADTBootArch = {7CD2B230-6CEA-4957-B5D7-CFA977C22B18}
+MemoryRangeSearch = {78BC9E89-552A-4ab8-9231-132E09E235B2}
+MemoryMatch = {6F8D0C6D-B6FB-4584-8B34-F39422CFA61A}
+BiosDate = {182A2B31-D5B8-45ef-BB6D-646EBAEDD8F1}
+GraphicsDisableFastS4 = {A380467C-D907-4716-8B9B-17584E34256C}
+AlwaysTrue = {8026ff68-3bd0-4ba4-a1d4-de724f781b78}
+AlwaysFalse = {9d991181-c86a-4517-9fe7-32290377b564}
+SystemArchitecture = {24453286-bde8-46bc-85d1-1982edf3e212}
+CpuType = {d2e7862c-b8fa-4274-9bd1-59ba8da0a7c2}
+RemoveBadS3Pages = {59229CA6-17A7-4E11-9EDA-DF0E93D7AF3A}
+
+; Match ACPI namespace object callback
+AcpiObjectName = {c2569bef-5980-4120-8582-9d0774dcf86d}
+
+; PCI device matching callback
+PCIDeviceMatch = {DFBFD6FE-435A-419e-8F2C-9B13A3C04C9E}
+PCIDeviceSetHackflags = {F79DE8DC-F3D1-4802-9C4B-6BF742D65FBD}
+PCIDeviceSetD0Delay = {898A8E39-096C-4A25-87E5-5BB0ED1D6704}
+PciDeviceSetMpsSize = {B9EB207B-E0C8-4C01-A575-49DD7D510B46}
+PCIDeviceQueryRule = {1E66F3D7-0FC9-4829-AA45-C430EA96A434}
+
+; ACPI device matching callback
+ACPIDeviceMatch = {33204598-9949-4ad1-B41E-A4A0F705DC12}
+
+; ACPI device ID muti-sz string matching callback
+ACPIDeviceIdMultiStringMatch = {C31600A9-8AED-442C-8013-8903D6E89BF8}
+
+; Intel PEP constraint capture callback
+IntelPepCaptureDeviceConstraint = {13925944-2a6a-4e3c-ac97-37735c19393d}
+
+;==========================================================
+;================= String Declaration =====================
+;==========================================================
+
+[Strings]
+
+;
+; Operators
+;
+
+* = "*"
+EQ = "="
+LE = "<="
+LT = "<"
+NE = "!="
+GE = ">="
+GT = ">"
+
+;
+; Acpi related
+;
+
+FACP = "FACP"
+DSDT = "DSDT"
+APIC = "APIC"
+
+;
+; OEM ID
+;
+
+ACER_OEMID = "ACER  "
+COMPAQ_OEMID = "COMPAQ"
+COMPAL_OEMID = "COMPAL"
+MICRON_OEMID = "MICRON"
+AMIINT_OEMID = "AMIINT"
+DELL_OEMID = "DELL  "
+FSC_OEMID = "FSC   "
+GATEWAY_OEMID = "GATEWA"
+N0BPE040_OEMID = "N0BPE040"
+TOSHIBA_OEMID = "TOSHIB"
+TOSHIBA_CPL_OEMID = "TOSCPL"
+TOSHIBA_INV_OEMID = "TOSINV"
+TOSHIBA_QCI_OEMID = "TOSQCI"
+TOSHIBA_ASU_OEMID = "TOSASU"
+AOEM_OEMID = "A M I "
+NVIDIA_OEMID = "Nvidia"
+HP_OEMID = "HP    "
+SUN_OEMID = "SUN   "
+AMD_OEMID = "AMD   "
+INTEL_OEMID = "INTEL "
+ASUS_OEMID = "ASUS  "
+ASUS2_OEMID = "_ASUS_"
+041111_OEMID = "041111"
+VT8371_OEMID = "VT8371"
+VT964X_OEMID = "VT694X"
+AWARD_OEMID = "AWARD "
+MSISYS_OEMID = "MSISYS"
+VT8598_OEMID = "VT8598"
+INSYDE_OEMID = "INSYDE"
+NEC_OEMID = "NEC   "
+IBM_OEMID = "IBM   "
+LENOVO_OEMID = "LENOVO"
+APPLE_OEMID = "APPLE "
+ASUS_AOEM_OEMID = "A_M_I_"
+ACER2_OEMID = "ACRSYS"
+SAMSUNG_OEMID = "SECCSD"
+QUALCOMM_OEMID = "QCOMM "
+SURFACE_OEMID = "NVIDIA"    ; Surface defines "NVIDIA" as the OEM ID in its tables.
+SURFACE_PRO3_OEMID = "OEMC"
+SURFACE_PRO3_TABLEID = "O E M C "
+
+;
+; ACPI Table ID
+;
+
+ALL_TABLEID = "*"
+M25D_TableId = "M25D    "
+LAREDO_TableId = "LAREDO  "
+TREK2SPF_TABLEID= "TREK2SPF"
+AMIINT10_TABLEID = "AMIINT10"
+GX260_TABLEID = "GX260  "
+GX270_TABLEID = "GX270  "
+WS210_TABLEID = "WS 210 "
+WS410_TABLEID = "WS 410 "
+WS610_TABLEID = "WS 610 "
+WS370_TABLEID = "WS 370 "
+WS650_TABLEID = "WS 650 "
+WS450_TABLEID = "WS 450 "
+OR840_TABLEID = "OR840   "
+PE1300_TABLEID = "PE1300  "
+PE2300_TABLEID = "PE2300  "
+PE4300_TABLEID = "PE4300  "
+PE4350_TABLEID = "PE4350  "
+PE6300_TABLEID = "PE6300  "
+PE6350_TABLEID = "PE6350  "
+PE8450_TABLEID = "PE8450  "
+PE2500_TABLEID = "PE2500  "
+PE2650_TABLEID = "PE2650  "
+PE4600_TABLEID = "PE4600  "
+PE6600_TABLEID = "PE6600  "
+PE6650_TABLEID = "PE6650  "
+WRANGLER_TABLEID = "Wrangler"
+ERA_TABLEID = "ERA     "
+AOEM_TABLEID = "OEMFACP "
+PROLIANT_TABLEID = "ProLiant"
+P51_TABLEID = "P51     "
+D17_TABLEID = "D17     "
+P50_TABLEID = "P50     "
+P52_TABLEID = "P52     "
+SUNMETRO_TABLEID = "SUNmetro"
+HAMMER_TABLEID = "HAMMER  "
+VIPER_TABLEID = "VIPER   "
+TOSFIC_OEMID = "TOSFIC"
+SAMBA_TABLEID = "Samba   "
+DIM_TABLEID = "DIM 8100"
+WS420_TABLEID = "WS 420 "
+WS220_TABLEID = "WS 220 "
+SONY_OEMID = "SONY  "
+U1_TABLEID = "U1      "
+TP-1A_TABLEID = "TP-1A   "
+TP-1D_TABLEID = "TP-1D   "
+TP-1E_TABLEID = "TP-1E   "
+TP-1G_TABLEID = "TP-1G   "
+TP-1I_TABLEID = "TP-1I   "
+TP-1K_TABLEID = "TP-1K   "
+TP-1M_TABLEID = "TP-1M   "
+TP-1N_TABLEID = "TP-1N   "
+TP-1O_TABLEID = "TP-1O   "
+TP-1P_TABLEID = "TP-1P   "
+TP-1Q_TABLEID = "TP-1Q   "
+TP-1R_TABLEID = "TP-1R   "
+TP-1S_TABLEID = "TP-1S   "
+TP-1U_TABLEID = "TP-1U   "
+TP-1V_TABLEID = "TP-1V   "
+TP-1W_TABLEID = "TP-1W   "
+TP-1Y_TABLEID = "TP-1Y   "
+TP-70_TABLEID = "TP-70   "
+TP-74_TABLEID = "TP-74   "
+TP-75_TABLEID = "TP-75   "
+TP-76_TABLEID = "TP-76   "
+TP-77_TABLEID = "TP-77   "
+TP-78_TABLEID = "TP-78   "
+TP-79_TABLEID = "TP-79   "
+TP-7B_TABLEID = "TP-7B   "
+TP-7C_TABLEID = "TP-7C   "
+TP-7F_TABLEID = "TP-7F   "
+TP-7I_TABLEID = "TP-7I   "
+TP-7J_TABLEID = "TP-7J   "
+TP-7L_TABLEID = "TP-7L   "
+TP-X21_TABLEID = "TP-X21  "
+GX620_TABLEID = "GX620  "
+GX280_TABLEID = "GX280  "
+WS380_TABLEID = "WS 380 "
+MS440GX_TABLEID = "MS440GX "
+D1831_TABLEID = "D1831   "
+LAKEPORT_TABLEID = "LAKEPORT"
+ALDERWD_TABLEID = "ALDERWD "
+TUMWATER_TABLEID = "TUMWATER"
+GRANTSD_TABLEID = "GRANTSD "
+CK8S_TABLEID = "CK8S    "
+CPIR_TABLEID = "CPi R  "
+TM350_TABLEID = "TM350   "
+CUV4X-D_TABLEID = "CUV4X-D "
+K7V_TABLEID = "K7V     "
+GX1_TABLEID = "GX1    "
+K7V-RM_TABLEID = "K7V-RM  "
+750_TABLEID = "750     "
+HPBDD_IO_TABLEID = "HPBDD_IO"
+FACP_000_TABLEID = "FACP_000"
+4550_TABLEID = "4550   "
+HOFFA_TABLEID = "HOFFA   "
+SERON_TABLEID = "SERONYXP"
+K5_TABLEID = "K5      "
+AWRDACPI_TABLEID = "AWRDACPI"
+ND036_TABLEID = "ND000036"
+BORG_TABLEID = "Borg    "
+SERVIGIL_TABLEID = "SERVIGIL"
+A003B_TABLEID = "A003B   "
+CALISTGA_TABLEID = "CALISTGA"
+NC6400_UMA_TABLEID = "30AD    "
+NC6400_DISCRETE_TABLEID = "30AC    "
+ALVISO_TABLEID = "ALVISO  "
+A07_TABLEID = "A07     "
+A08_TABLEID = "A08     "
+APPLE_TABLEID = "Apple00"
+ASUS_OEMAPIC = "OEMAPIC "
+RX2800-2_TABLEID = "RX2800-2"
+BL860C-2_TABLEID = "BL860C-2"
+BL870C-2_TABLEID = "BL870C-2"
+BL890C-2_TABLEID = "BL890C-2"
+NOTEBOOK_TABLEID = "Notebook"
+1651_TABLEID = "FACP1651"
+ACRPRDCT_TABLEID = "ACRPRDCT"
+MACBOOK_TABLEID = "MacBook"
+MACBOOKAIR_TABLEID = "MacBookA"
+NIKE_TABLEID = "LH43STAR"
+TOSASU00_TABLEID = "TOSASU00"
+NVCARDHUAP30_TABLEID = "AP30EDK2"
+NVCOMOT114_TABLEID = "T114EDK2"
+INTELSOCCV_TABLEID = "CLOVERVW"
+CB-01_TABLEID = "CB-01   "
+QCOMM8960_TABLEID = "MSM8960 "
+QCOMM8930_TABLEID = "MSM8930 "
+MSM8930_TABLEID = "MSM8930 "
+MSM8960_TABLEID = "MSM8960 "
+MSM8909_TABLEID = "MSM8909 "
+EAGLLAKE_TABLEID = "EAGLLAKE"
+
+;
+; Processor IDs
+;
+
+PROCESSOR_INTEL = "GenuineIntel"
+PROCESSOR_AMD = "AuthenticAMD"
+
+;
+; ACPI Hardware IDs
+;
+
+NVRAIDBUS_HID1 = "ACPI\NVRAIDBUS"
+NVRAIDBUS_HID2 = "ACPI\_NVRAIDBUS"
+
+;
+; Hardware IDs for WIFI, BLUETOOTH, FM on QCOM8909
+;
+
+QCOM8909_HID1 = "QWCN\QCOM2450"
+QCOM8909_HID2 = "QWCN\QCOM245D"
+QCOM8909_HID3 = "QWCN\QCOM2150"
+
+;
+; SD-enumerated Marvell WiFi controller hardware ID strings.
+;
+
+MARVELL_SD_WIFI_HID1 = "SD\VID_02DF&PID_9128"
+MARVELL_SD_WIFI_HID2 = "SD\VID_02DF&PID_9129"
+
+;
+; PEP Device IDs 
+; 
+
+SURFACE_PRO3_WIFI = "\_SB.PCI0.RP01.WIFI"

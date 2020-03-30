@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:cmiv2="urn:schemas-microsoft-com:asm.v3" cmiv2:copyright="Copyright (c) Microsoft Corporation. All Rights Reserved.">
+  <assemblyIdentity name="Microsoft.Windows.IsolationAutomation" version="1.0.10586.0" processorArchitecture="amd64" publicKeyToken="6595b64144ccf1df" type="win32" />
+  <dependency cmiv2:discoverable="no">
+    <dependentAssembly>
+      <assemblyIdentity name="Microsoft.Windows.IsolationAutomation.ProxyStub" version="1.0.10586.0" processorArchitecture="amd64" language="*" publicKeyToken="6595b64144ccf1df" type="win32" />
+    </dependentAssembly>
+  </dependency>
+  <file hash="b6d694554c17e0fb338c3855b9d3e6ccf5913e05" hashalg="SHA1" name="sxsoa.dll" cmiv2:sourceName="" cmiv2:importPath="$(build.nttree)\asms\10\msft\windows\sxsoa\">
+    <comClass clsid="{85BB4477-6DC3-4A8D-84D6-86A0FA1AAF8B}" threadingModel="both" progid="Microsoft.Windows.ActCtx.1" tlbid="{5e0598d8-34a0-4329-bdbd-9d165c5c1554}">
+      <progid xmlns="urn:schemas-microsoft-com:asm.v1">Microsoft.Windows.ActCtx</progid>
+    </comClass>
+    <typelib tlbid="{5e0598d8-34a0-4329-bdbd-9d165c5c1554}" version="1.0" helpdir="" />
+    <asmv2:hash xmlns:asmv2="urn:schemas-microsoft-com:asm.v2">
+      <dsig:Transforms xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">ISatPaEer5XLoJlSLXwJuWOIRisOUUSXEr7lD9YCal4=</dsig:DigestValue>
+    </asmv2:hash>
+  </file>
+  <memberships xmlns="urn:schemas-microsoft-com:asm.v3">
+    <categoryMembership>
+      <id name="Microsoft.Windows.Fusion_Components_All" version="10.0.10586.0" processorArchitecture="amd64" language="neutral" buildType="release" publicKeyToken="1122334455667788" />
+    </categoryMembership>
+    <categoryMembership>
+      <id name="Microsoft.Windows.Categories" version="1.0.0.0" publicKeyToken="365143bb27e7ac8b" typeName="BootRecovery" />
+    </categoryMembership>
+  </memberships>
+</assembly>

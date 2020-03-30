@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:cmiv2="urn:schemas-microsoft-com:asm.v3" cmiv2:copyright="Copyright (c) Microsoft Corporation. All Rights Reserved.">
+  <assemblyIdentity name="Microsoft.Windows.IsolationAutomation.ProxyStub" version="1.0.10586.0" processorArchitecture="x86" publicKeyToken="6595b64144ccf1df" type="win32" />
+  <file hash="874e79728f80db449f8dbafb47abd61e4d35738d" hashalg="SHA1" name="sxsoaps.dll" cmiv2:sourceName="" cmiv2:importPath="$(build.nttree)\asms\10\msft\windows\sxsoaps\">
+    <comInterfaceProxyStub iid="{8FA7728F-B69B-4EE5-99F2-E2AA021BEF28}" name="IActCtx" tlbid="{8143C9AA-38F8-4729-B935-DF6823C616C6}" />
+    <asmv2:hash xmlns:asmv2="urn:schemas-microsoft-com:asm.v2">
+      <dsig:Transforms xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">K8lTKLuxNrPqLH+KG0dAUCJjIED96mAixGPvdD4F9go=</dsig:DigestValue>
+    </asmv2:hash>
+  </file>
+  <file hash="f5607af05162354b6af02b8f9bfce10e200a88ae" hashalg="SHA1" name="sxsoaps.tlb" cmiv2:sourceName="" cmiv2:importPath="$(build.nttree)\asms\10\msft\windows\sxsoaps\">
+    <typelib tlbid="{8143C9AA-38F8-4729-B935-DF6823C616C6}" version="1.0" helpdir="" />
+    <asmv2:hash xmlns:asmv2="urn:schemas-microsoft-com:asm.v2">
+      <dsig:Transforms xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">hsOU/pqLtct+/gs8/q0/Ibm5viEqxfmNVXngBFDPB18=</dsig:DigestValue>
+    </asmv2:hash>
+  </file>
+  <memberships xmlns="urn:schemas-microsoft-com:asm.v3">
+    <categoryMembership>
+      <id name="Microsoft.Windows.Fusion_Components_All" version="10.0.10586.0" processorArchitecture="x86" language="neutral" buildType="release" publicKeyToken="1122334455667788" />
+    </categoryMembership>
+    <categoryMembership>
+      <id name="Microsoft.Windows.Categories" version="1.0.0.0" publicKeyToken="365143bb27e7ac8b" typeName="BootRecovery" />
+    </categoryMembership>
+  </memberships>
+</assembly>

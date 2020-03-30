@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:cmiv2="urn:schemas-microsoft-com:asm.v3" cmiv2:copyright="Copyright (c) Microsoft Corporation. All Rights Reserved.">
+  <assemblyIdentity name="Microsoft.Windows.SystemCompatible" version="6.0.10586.0" processorArchitecture="amd64" publicKeyToken="6595b64144ccf1df" type="win32" />
+  <dependency cmiv2:discoverable="no">
+    <dependentAssembly>
+      <assemblyIdentity name="Microsoft.Windows.IsolationAutomation" version="1.0.10586.0" processorArchitecture="amd64" language="*" publicKeyToken="6595b64144ccf1df" type="win32" />
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="yes" cmiv2:discoverable="no">
+    <dependentAssembly>
+      <assemblyIdentity name="Microsoft.Windows.GdiPlus" version="1.1.0.0" processorArchitecture="amd64" language="*" publicKeyToken="6595b64144ccf1df" type="win32" />
+    </dependentAssembly>
+  </dependency>
+  <dependency optional="yes" cmiv2:discoverable="no">
+    <dependentAssembly>
+      <assemblyIdentity name="Microsoft.Windows.Common-Controls" version="5.82.0.0" processorArchitecture="amd64" language="*" publicKeyToken="6595b64144ccf1df" type="win32" />
+    </dependentAssembly>
+  </dependency>
+  <memberships xmlns="urn:schemas-microsoft-com:asm.v3">
+    <categoryMembership>
+      <id name="Microsoft.Windows.Fusion_Components_All" version="10.0.10586.0" processorArchitecture="amd64" language="neutral" buildType="release" publicKeyToken="1122334455667788" />
+    </categoryMembership>
+    <categoryMembership>
+      <id name="Microsoft.Windows.Categories" version="1.0.0.0" publicKeyToken="365143bb27e7ac8b" typeName="BootRecovery" />
+    </categoryMembership>
+  </memberships>
+</assembly>

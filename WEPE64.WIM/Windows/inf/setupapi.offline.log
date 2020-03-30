@@ -1,0 +1,206 @@
+[Device Install Log]
+     OS Version = 6.3.9600
+     Service Pack = 0.0
+     Suite = 0x0100
+     ProductType = 1
+     Architecture = amd64
+
+[BeginLog]
+
+[Boot Session: 2017/03/17 12:08:05.496]
+
+>>>  [Load Offline Registry Hive - SYSTEM]
+>>>  Section start 2017/03/18 19:53:41.423
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Opened existing hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/SYSTEM'.
+<<<  Section end 2017/03/18 19:53:41.425
+<<<  [Exit status: SUCCESS]
+
+
+>>>  [Load Offline Registry Hive - DRIVERS]
+>>>  Section start 2017/03/18 19:53:41.426
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Opened existing hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/DRIVERS'.
+<<<  Section end 2017/03/18 19:53:41.428
+<<<  [Exit status: SUCCESS]
+
+
+>>>  [Import Driver Package - C:\Users\Administrator\Desktop\64\iaAHCIC.inf]
+>>>  Section start 2017/03/18 19:53:48.631
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Driver Store   = D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore (10.0.10586)
+     sto: Driver Package = C:\Users\Administrator\Desktop\64\iaAHCIC.inf
+     sto: Architecture   = amd64
+     sto: Flags          = 0x00000000
+     inf: Provider       = Intel Corporation
+     inf: Class GUID     = {4d36e96a-e325-11ce-bfc1-08002be10318}
+     inf: Driver Version = 09/13/2016,15.2.0.1020
+     inf: Catalog File   = iaAHCIC.cat
+     inf: Version Flags  = 0x00000001
+     inf: {Query Configurability: C:\Users\Administrator\Desktop\64\iaAHCIC.inf} 19:53:48.646
+     inf:      Driver package 'iaAHCIC.inf' is configurable.
+     inf: {Query Configurability: exit(0x00000000)} 19:53:48.649
+     flq: Copying 'C:\Users\Administrator\Desktop\64\iaAHCIC.cat' to 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaAHCIC.cat'.
+     flq: Copying 'C:\Users\Administrator\Desktop\64\iaAHCIC.inf' to 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaAHCIC.inf'.
+     flq: Copying 'C:\Users\Administrator\Desktop\64\iaStorA.sys' to 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaStorA.sys'.
+     flq: Copying 'C:\Users\Administrator\Desktop\64\iaStorF.sys' to 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaStorF.sys'.
+     idb: {Register Driver Package: D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaAHCIC.inf} 19:53:48.683
+     idb:      Created driver package object 'iaahcic.inf_amd64_b5208b4b05626800' in SYSTEM database node.
+     idb:      Created driver INF file object 'oem0.inf' in SYSTEM database node.
+     idb:      Registered driver package 'iaahcic.inf_amd64_b5208b4b05626800' with 'oem0.inf'.
+     idb: {Register Driver Package: exit(0x00000000)} 19:53:48.691
+     idb: {Publish Driver Package: D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaAHCIC.inf} 19:53:48.692
+     idb:      Activating driver package 'iaahcic.inf_amd64_b5208b4b05626800'.
+     cpy:      Published 'iaahcic.inf_amd64_b5208b4b05626800\iaahcic.inf' to 'oem0.inf'.
+     idb:      Indexed 5 device IDs for 'iaahcic.inf_amd64_b5208b4b05626800'.
+     idb: {Publish Driver Package: exit(0x00000000)} 19:53:48.698
+     sig: Published catalog 'iaAHCIC.cat' as 'oem0.cat'.
+     sto: Driver Store Filename = D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaAHCIC.inf
+<<<  Section end 2017/03/18 19:53:48.704
+<<<  [Exit status: SUCCESS]
+
+
+>>>  [Reflect Critical Driver Package - D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaAHCIC.inf]
+>>>  Section start 2017/03/18 19:53:48.705
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Driver Store   = D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore (10.0.10586)
+     inf: Class GUID     = {4d36e96a-e325-11ce-bfc1-08002be10318}
+     inf: Class Options  = Configurable BootCritical
+     sto: {Load Offline Registry Hive: SOFTWARE} 19:53:48.711
+     sto:      Opened existing hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/SOFTWARE'.
+     sto: {Load Offline Registry Hive: exit(0x00000000)} 19:53:48.713
+     inf: {Configure Driver: Intel(R) 6th Generation Core Processor Family Platform I/O SATA AHCI Controller}
+     inf:      Section Name = iaStorA_inst_8.NTamd64
+     inf:      {Add Service: iaStorA}
+     inf:           Start Type    = 0
+     inf:           Service Type  = 1
+     inf:           Error Control = 1
+     inf:           Image Path    = System32\drivers\iaStorA.sys
+     inf:           Group         = SCSI miniport
+     inf:           Created new service 'iaStorA'.
+     inf:      {Add Service: exit(0x00000000)}
+     inf:      Hardware Id  = PCI\VEN_8086&DEV_9D03&CC_0106
+     inf:      {Configure Driver Configuration: iaStorA_inst_8.NTamd64}
+     inf:           Service Name  = iaStorA
+     inf:           Config Flags  = 0x00000000
+     inf:      {Configure Driver Configuration: exit(0x00000000)}
+     inf: {Configure Driver: exit(0x00000000)}
+     inf: {Configure Driver: Intel(R) 100 Series/C230 Chipset Family SATA AHCI Controller}
+     inf:      Section Name = iaStorA_inst_8.NTamd64
+     inf:      Hardware Id  = PCI\VEN_8086&DEV_A102&CC_0106
+     inf: {Configure Driver: exit(0x00000000)}
+     inf: {Configure Driver: Intel(R) 100 Series/C230 Chipset Family SATA AHCI Controller}
+     inf:      Section Name = iaStorA_inst_8.NTamd64
+     inf:      Hardware Id  = PCI\VEN_8086&DEV_A103&CC_0106
+     inf: {Configure Driver: exit(0x00000000)}
+     inf: {Configure Driver: Intel(R) 200 Series Chipset Family SATA AHCI Controller}
+     inf:      Section Name = iaStorA_inst_8.NTamd64
+     inf:      Hardware Id  = PCI\VEN_8086&DEV_A282&CC_0106
+     inf: {Configure Driver: exit(0x00000000)}
+     flq: Copying 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iaahcic.inf_amd64_b5208b4b05626800\iaStorA.sys' to 'D:\WIN10PE内核\W10PE64\Windows\System32\drivers\iaStorA.sys'.
+<<<  Section end 2017/03/18 19:53:48.773
+<<<  [Exit status: SUCCESS]
+
+
+>>>  [Import Driver Package - C:\Users\Administrator\Desktop\64\iaStorAC.inf]
+>>>  Section start 2017/03/18 19:53:48.776
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Driver Store   = D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore (10.0.10586)
+     sto: Driver Package = C:\Users\Administrator\Desktop\64\iaStorAC.inf
+     sto: Architecture   = amd64
+     sto: Flags          = 0x00000000
+     inf: Provider       = Intel Corporation
+     inf: Class GUID     = {4d36e97b-e325-11ce-bfc1-08002be10318}
+     inf: Driver Version = 09/13/2016,15.2.0.1020
+     inf: Catalog File   = iaStorAC.cat
+     inf: Version Flags  = 0x00000001
+     inf: {Query Configurability: C:\Users\Administrator\Desktop\64\iaStorAC.inf} 19:53:48.790
+     inf:      Driver package 'iaStorAC.inf' is configurable.
+     inf: {Query Configurability: exit(0x00000000)} 19:53:48.793
+     flq: Copying 'C:\Users\Administrator\Desktop\64\iaStorA.sys' to 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorA.sys'.
+     flq: Copying 'C:\Users\Administrator\Desktop\64\iaStorF.sys' to 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorF.sys'.
+     flq: Copying 'C:\Users\Administrator\Desktop\64\iaStorAC.cat' to 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorAC.cat'.
+     flq: Copying 'C:\Users\Administrator\Desktop\64\iaStorAC.inf' to 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorAC.inf'.
+     idb: {Register Driver Package: D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorAC.inf} 19:53:48.816
+     idb:      Created driver package object 'iastorac.inf_amd64_e4e8c23dfee35c84' in SYSTEM database node.
+     idb:      Created driver INF file object 'oem1.inf' in SYSTEM database node.
+     idb:      Registered driver package 'iastorac.inf_amd64_e4e8c23dfee35c84' with 'oem1.inf'.
+     idb: {Register Driver Package: exit(0x00000000)} 19:53:48.823
+     idb: {Publish Driver Package: D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorAC.inf} 19:53:48.825
+     idb:      Activating driver package 'iastorac.inf_amd64_e4e8c23dfee35c84'.
+     cpy:      Published 'iastorac.inf_amd64_e4e8c23dfee35c84\iastorac.inf' to 'oem1.inf'.
+     idb:      Indexed 3 device IDs for 'iastorac.inf_amd64_e4e8c23dfee35c84'.
+     idb: {Publish Driver Package: exit(0x00000000)} 19:53:48.832
+     sig: Published catalog 'iaStorAC.cat' as 'oem1.cat'.
+     sto: Driver Store Filename = D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorAC.inf
+<<<  Section end 2017/03/18 19:53:48.838
+<<<  [Exit status: SUCCESS]
+
+
+>>>  [Reflect Critical Driver Package - D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorAC.inf]
+>>>  Section start 2017/03/18 19:53:48.839
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Driver Store   = D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore (10.0.10586)
+     inf: Class GUID     = {4d36e97b-e325-11ce-bfc1-08002be10318}
+     inf: Class Options  = Configurable BootCritical
+     inf: {Configure Driver: Intel Chipset SATA RAID Controller}
+     inf:      Section Name = iaStorA_inst_8.NTamd64
+     inf:      {Add Service: iaStorA}
+     inf:           Start Type    = 0
+     inf:           Service Type  = 1
+     inf:           Error Control = 1
+     inf:           Image Path    = System32\drivers\iaStorA.sys
+     inf:           Group         = SCSI miniport
+     inf:           Updated service 'iaStorA'.
+     inf:      {Add Service: exit(0x00000000)}
+     inf:      Hardware Id  = PCI\VEN_8086&DEV_2822&CC_0104
+     inf:      {Configure Driver Configuration: iaStorA_inst_8.NTamd64}
+     inf:           Service Name  = iaStorA
+     inf:           Config Flags  = 0x00000000
+     inf:      {Configure Driver Configuration: exit(0x00000000)}
+     inf: {Configure Driver: exit(0x00000000)}
+     inf: {Configure Driver: Intel Chipset SATA RAID Controller}
+     inf:      Section Name = iaStorA_inst_8.NTamd64
+     inf:      Hardware Id  = PCI\VEN_8086&DEV_282A&CC_0104
+     inf: {Configure Driver: exit(0x00000000)}
+     flq: Copying 'D:\WIN10PE内核\W10PE64\Windows\System32\DriverStore\FileRepository\iastorac.inf_amd64_e4e8c23dfee35c84\iaStorA.sys' to 'D:\WIN10PE内核\W10PE64\Windows\System32\drivers\iaStorA.sys'.
+     cpy: Existing file 'D:\WIN10PE内核\W10PE64\Windows\System32\drivers\iaStorA.sys' remains unchanged.
+<<<  Section end 2017/03/18 19:53:48.905
+<<<  [Exit status: SUCCESS]
+
+
+>>>  [Unload Offline Registry Hive - SYSTEM]
+>>>  Section start 2017/03/18 19:54:10.174
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Closed hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/SYSTEM'.
+     sto: Unable to unload hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/SYSTEM' loaded by another process. Error = 0x00000005, Time = 0 ms
+<<<  Section end 2017/03/18 19:54:10.178
+<<<  [Exit status: SUCCESS]
+
+
+>>>  [Unload Offline Registry Hive - SOFTWARE]
+>>>  Section start 2017/03/18 19:54:10.179
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Closed hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/SOFTWARE'.
+     sto: Unable to unload hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/SOFTWARE' loaded by another process. Error = 0x00000005, Time = 0 ms
+<<<  Section end 2017/03/18 19:54:10.183
+<<<  [Exit status: SUCCESS]
+
+
+>>>  [Unload Offline Registry Hive - DRIVERS]
+>>>  Section start 2017/03/18 19:54:10.184
+       os: Version = 6.3.9600, Service Pack = 0.0, Suite = 0x0100, ProductType = 1, Architecture = amd64
+      cmd: "C:\Windows\System32\rundll32.exe" "C:\Users\Administrator\Desktop\Dism++\Config\amd64\CBSHost.dll",RunCbsHost {cd119d08-2909-4295-8b66-55d3e4e89f6b} "D:\WIN10PE内核\W10PE64" "\\?\C:\Windows\Temp\\" 150 4
+     sto: Closed hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/DRIVERS'.
+     sto: Unable to unload hive key '{bf1a281b-ad7b-4476-ac95-f47682990ce7}D:/WIN10PE内核/W10PE64/Windows/System32/config/DRIVERS' loaded by another process. Error = 0x00000005, Time = 0 ms
+<<<  Section end 2017/03/18 19:54:10.188
+<<<  [Exit status: SUCCESS]
+

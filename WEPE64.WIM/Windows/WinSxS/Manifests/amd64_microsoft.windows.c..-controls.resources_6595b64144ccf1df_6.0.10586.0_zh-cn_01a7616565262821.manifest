@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:cmiv2="urn:schemas-microsoft-com:asm.v3" cmiv2:copyright="Copyright (c) Microsoft Corporation. All Rights Reserved.">
+  <noInheritable />
+  <assemblyIdentity name="Microsoft.Windows.Common-Controls.Resources" version="6.0.10586.0" processorArchitecture="amd64" language="zh-CN" publicKeyToken="6595b64144ccf1df" type="win32" />
+  <file hash="d78a919c555ea7211c49a01ed7d2e4fcaf3b4d9f" hashalg="SHA1" name="comctl32.dll.mui" cmiv2:sourceName="" cmiv2:importPath="$(build.nttree)\multi\zh-cn\asms\60\msft\windows\common\controls\">
+    <asmv2:hash xmlns:asmv2="urn:schemas-microsoft-com:asm.v2">
+      <dsig:Transforms xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">xWWSaPcM0TiE1ukPhU1wX8ZOd5B91bsF/ulnOBfrkHM=</dsig:DigestValue>
+    </asmv2:hash>
+  </file>
+  <memberships xmlns="urn:schemas-microsoft-com:asm.v3">
+    <categoryMembership>
+      <id name="Microsoft.Windows.Fusion_Components_All" version="10.0.10586.0" processorArchitecture="amd64" language="neutral" buildType="release" publicKeyToken="1122334455667788" />
+    </categoryMembership>
+    <categoryMembership>
+      <id name="Microsoft.Windows.Multilingual_Components_All" version="10.0.10586.0" processorArchitecture="amd64" language="neutral" buildType="release" publicKeyToken="31bf3856ad364e35" />
+    </categoryMembership>
+    <categoryMembership>
+      <id name="Microsoft.Windows.Categories" version="1.0.0.0" publicKeyToken="365143bb27e7ac8b" typeName="BootRecovery" />
+    </categoryMembership>
+  </memberships>
+</assembly>
