@@ -1,0 +1,29 @@
+感谢您安装了微PE工具箱，本目录包含了微PE的主要启动文件和内核镜像。
+以下技术支持信息供您DIY参考：
+
+微PE工具箱安装到硬盘后不会产生过多的文件。只会在系统目录下面放置一个WEPE文件夹和一个WEIPE文件。WEIPE文件的实质是GRUB4DOS的引导文件GRLDR。当安装到NT6以上系统且不设置密码不包含DOS时没有WEIPE文件。系统目录还会存放卸载程序UnPE.exe，这个程序在卸载之后会自动消失。
+
+微PE工具箱安装到U盘后也不会产生过多的文件。当安装方式为方法一四五的时候，会在根目录下面放置一个WEPE文件夹一个EFI文件夹和一个BOOTMGR文件。当安装方式为方法二的时候，会出现一个WEPE文件夹一个EFI文件夹和一个BOOTMGR文件。这些文件都是隐藏的，删除这些文件或格式化U盘即可删除PE。方法三安装到隐藏分区，在U盘根目录不会出现任何文件，若需要删除方法三安装的PE，只需用方法一二四五重新制作一次PE后手动格式化即可。
+
+微PE工具箱生成ISO镜像后也不会产生过多的文件。根目录有WEPE文件夹EFI文件夹和BOOTMGR文件。
+
+WEPE文件夹中每个文件对应的作用如下：
+
+程序部分
+WEPE.TXT - 微PE工具箱说明文档。
+WALLPAPER.JPG － 若存在则为自定义PE桌面壁纸文件。
+WEPE.INI － 外置程序的配置文件，可以对PE桌面、开始菜单等进行配置。
+Res目录 - 若存在，则为放置硬盘安装后保存的引导工具。
+
+引导部分
+WEPE64.WIM - WINPE的镜像文件，32位的是WEPE32.WIM。
+B64 - BCD文件，32位的是B32。
+WEPE64 - 原名 BOOTMGR，32位的是WEPE32。
+WEPE.SDI - 原名 BOOT.SDI
+WEIPE - GRUB4DOS的引导文件GRLDR
+PELOAD - 用来启动WEIPE
+MAXDOS.IMG - MAXDOS的镜像文件
+WEPE.INI - GRUB4DOS菜单
+MESSAGE - GRUB4DOS背景文件
+
+更多信息请访问：http://www.wepe.com.cn
